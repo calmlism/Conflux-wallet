@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Conflux Wallet</string>
+
+    <string name="exit_tips">Press again to exit the program</string>
+
+    <string name="homepage_tab_text_mall">Wallet</string>
+    <string name="homepage_tab_text_mine">Me</string>
+    <string name="mine_title">Me</string>
+    <string name="property_drawer_qrcode_scanner">Scan</string>
+    <string name="property_drawer_create_wallet">Create a wallet</string>
+
+    <string name="create_wallet_name_hint">Wallet Name</string>
+    <string name="create_wallet_pwd_hint">Password</string>
+    <string name="create_wallet_pwd_again_hint">Repeat the password</string>
+    <string name="create_wallet_pwd_reminder_info_hint">Password prompt information(Not fill)</string>
+    <string name="create_wallet_agreement_reminder">I have read and agreed</string>
+    <string name="create_wallet_agreement">Service and Privacy Policy</string>
+    <string name="create_wallet_name_repeat_tips">Duplicate wallet name</string>
+    <string name="create_wallet_name_input_tips">Please enter the name of the wallet</string>
+    <string name="create_wallet_pwd_input_tips">Password can not be blank</string>
+    <string name="create_wallet_pwd_confirm_input_tips">The passwords are inconsistent, please re-enter</string>
+    <string name="create_wallet_alert1">* Passwords are used for privacy protection and transaction authorization, and strength is very important</string>
+    <string name="create_wallet_alert2">* The wallet does not store the password key, and it can t help you get it back. Please keep in mind</string>
+
+    <string name="property_total_assets_cny">Total assets(¥)</string>
+    <string name="property_total_assets_usd">Total assets($)</string>
+    <string name="property_approximate">≈</string>
+
+    <string name="mine_wallet_manage">Wallet Management</string>
+    <string name="mine_trade_record">Transaction Record</string>
+    <string name="mine_msg_center">Message Center</string>
+    <string name="mine_contracts">Contact</string>
+    <string name="mine_system_setting">System Settings</string>
+    <string name="mine_personal_center">Personal Center</string>
+    <string name="mine_help_center">Technology Exchange</string>
+    <string name="mine_about_us">About Us</string>
+
+    <string name="add_new_property_title">Add new assets</string>
+    <string name="search_toolbar_cancel">Cancel</string>
+
+    <string name="gathering_qrcode_title">Collection code</string>
+    <string name="gathering_qrcode_share">Share it</string>
+    <string name="gathering_qrcode_gathering_money">Collection amount</string>
+    <string name="gathering_qrcode_copy_gathering_address">Copy payment address</string>
+    <string name="gathering_qrcode_copy_success">Copied</string>
+
+    <string name="contact_no_data">No contacts at this time</string>
+
+    <string name="transfer_title_confirm">Transfer Details</string>
+    <string name="transfer_title">Transfer</string>
+    <string name="transfer_address">Payee wallet address</string>
+    <string name="transfer_money">Transfer Amount</string>
+    <string name="transfer_remark">Remarks</string>
+    <string name="transfer_gas_cost">Miner Cost</string>
+    <string name="transfer_gas_price">Customize Gas Price</string>
+    <string name="transfer_gas">Customize Gas</string>
+    <string name="transfer_advanced_setting">Advanced Options</string>
+    <string name="transfer_hex_data">Hexadecimal Data</string>
+    <string name="transfer_next">Next</string>
+    <string name="transfer_gas_slow">Slow</string>
+    <string name="transfer_gas_quick">Fast</string>
+    <string name="transfer_cfx_unit">&#160;cfx</string>
+
+    <string name="property_detail_title">CFX</string>
+    <string name="property_detail_transfer">Transfer</string>
+    <string name="property_detail_gathering">Receipt</string>
+
+    <string name="wallet_manager_create_wallet">Create Wallet</string>
+    <string name="wallet_manager_load_wallet">Import Wallet</string>
+
+    <string name="news_center_all_read">All Read</string>
+    <string name="news_center_title">Message Center</string>
+
+    <string name="system_setting_title">System Settings</string>
+    <string name="system_setting_language">Multi-Language</string>
+    <string name="system_setting_currency">Currency Unit</string>
+    <string name="system_setting_net">Network Settings</string>
+    <string name="system_setting_gesture">Gesture Password</string>
+
+    <string name="language_setting_chinese">Simplified Chinese</string>
+    <string name="language_setting_English">English</string>
+    <string name="language_setting_save">Save</string>
+
+    <string name="net_setting_main">Mainnet</string>
+    <string name="net_setting_kovan">Kovan </string>
+    <string name="net_setting_ropsten">Ropsten </string>
+    <string name="net_setting_local_dev">Local </string>
+
+    <string name="currency_unit_setting_cny">CNY</string>
+    <string name="currency_unit_setting_usd">USD</string>
+
+    <string name="web3_setting_wallet_service_url">WALLET SERVICE URL</string>
+    <string name="web3_setting_wallet_service_url_hint">https://web3.token.com</string>
+    <string name="web3_setting_reset_url">设置为默认的URL</string>
+    <string name="trading_record_title">Transaction Record</string>
+    <string name="switch_wallet_title">Switch Account</string>
+
+    <string name="wallet_backup_tips1">The last step: back up your wallet now!</string>
+    <string name="wallet_backup_tips2">Back up your wallet: Export the mnemonic and copy it to a safe place. Never save it to the network, then try to transfer it and transfer it out of the small asset.</string>
+    <string name="wallet_backup_backup_btn">Backup wallet</string>
+    <string name="wallet_backup_skip_btn">jump over</string>
+    <string name="wallet_backup_backup_help">View backup detailed tutorial</string>
+
+
+    <string name="input_pwd_dialog_tip">Please enter your password</string>
+    <string name="input_pwd_delete_tip">Please be cautious, this operation cannot be undone</string>
+    <string name="input_pwd_dialog_confirm">Confirm</string>
+
+    <string name="mnemonic_backup_title">Backup mnemonic</string>
+    <string name="mnemonic_backup_tips1">Copy and write your wallet mnemonic</string>
+    <string name="mnemonic_backup_tips2">The mnemonic is used to reply to the wallet or reset the wallet password, drop it to the paper accurately, and store it in a safe place that only you know.</string>
+
+    <string name="mnemonic_backup_alert_tips">If someone gets your mnemonic, you will get your assets directly! Please copy the mnemonic and store it in a safe place.</string>
+    <string name="mnemonic_backup_alert_btn">Got it</string>
+    <string name="mnemonic_backup_alert_title">Do not take a screenshot</string>
+
+    <string name="verify_backup_tip1">Confirm your wallet mnemonic</string>
+    <string name="verify_backup_tip2">Please click on the mnemonic in order to confirm that your backup mnemonic is correct.</string>
+    <string name="verify_backup_failed">Backup failed, please check your mnemonic</string>
+
+    <string name="load_wallet_title">Import Wallet</string>
+    <string name="load_wallet_btn">Start Importing</string>
+
+
+
+    <string name="load_wallet_indicator_mnemonic">Mnemonic</string>
+    <string name="load_wallet_indicator_official">Private Key</string>
+    <string name="load_wallet_indicator_keystore">KeyStore</string>
+    <!--<string name="load_wallet_indicator_official">官方钱包</string>-->
+    <string name="load_wallet_indicator_private_key">Private key</string>
+    <string name="load_wallet_indicator_observer">Observed</string>
+
+    <string name="load_wallet_by_mnemonic_hint">Mnemonic, separated by spaces</string>
+    <string name="load_wallet_by_mnemonic_input_tip">Please check your mnemonic</string>
+    <string name="load_wallet_by_mnemonic_standard">m/44\'/60\'/0\'/0/0</string>
+    <string name="load_wallet_by_mnemonic_standard_ledger">m/44\'/60\'/0\'/0</string>
+    <string name="load_wallet_by_mnemonic_standard_custom">m/44\'/60\'/1\'/0/0</string>
+    <string name="load_wallet_by_mnemonic_standard_jaxx_option">m/44\'/60\'/0\'/0/0 (LMM)</string>
+    <string name="load_wallet_by_mnemonic_standard_ledger_option">m/44\'/60\'/0\'/0 Ledger (LMM)</string>
+    <string name="load_wallet_by_mnemonic_standard_custom_option">m/44\'/60\'/1\'/0/0 Custom path</string>
+    <string name="load_wallet_by_mnemonic_help">What is a mnemonic?</string>
+    <string name="load_wallet_already_exist">Wallet already exists</string>
+
+    <string name="load_wallet_by_official_wallet_keystore_hint">keystore Text content</string>
+    <string name="load_wallet_by_official_wallet_keystore_tip">Copy and paste the contents of the wallet keystore file directly into the input box. Or scan the entry by generating a QR code of the keystore content.</string>
+    <string name="load_wallet_by_official_wallet_help">What is a keystore?</string>
+    <string name="load_wallet_by_official_wallet_keystore_input_tip">Keystore file is invalid</string>
+
+    <string name="load_wallet_by_private_key_input_tip">Invalid private key</string>
+    <string name="load_wallet_by_private_key_hint">Clear text private key</string>
+    <string name="load_wallet_by_private_key_help">What is a private key?</string>
+
+    <string name="wallet_detail_wallet_name">Wallet Name</string>
+    <string name="wallet_detail_modify_pwd">Change Password</string>
+    <string name="wallet_detail_derive_private_key">Export private key</string>
+    <string name="wallet_detail_derive_keystore">Export keystore</string>
+
+
+    <string name="derive_with_keystore">Keystore</string>
+    <string name="derive_with_qrcode">QR Code</string>
+
+    <string name="wallet_detail_delete_wallet">Delete Wallet</string>
+    <string name="wallet_detail_save_success">Successfully Saved</string>
+    <string name="wallet_detail_wrong_pwd">Wrong Password</string>
+
+    <string name="modify_password_title">change the password</string>
+    <string name="modify_password_old_pwd">current password</string>
+    <string name="modify_password_new_pwd">new password</string>
+    <string name="modify_password_old_pwd_again">Repeat new password</string>
+    <string name="modify_password_tip">forget password? Import a mnemonic or private key to reset the password.</string>
+    <string name="modify_password_import">Import now</string>
+    <string name="modify_password_complete">carry out</string>
+    <string name="modify_password_alert4">The original password is wrong</string>
+    <string name="modify_password_alert5">New password is entered twice inconsistent</string>
+    <string name="modify_password_success">password has been updated</string>
+
+    <string name="derive_private_key_alert">Security warning: The private key is not encrypted, the export is risky. It is recommended to use the mnemonic and keystore for backup.</string>
+    <string name="derive_private_key_copy_btn">copy</string>
+    <string name="derive_private_key_already_copy_btn">Copied</string>
+
+    <string name="derive_keystore_title">Export Keystore</string>
+    <string name="derive_keystore_tip_title">Save offline</string>
+    <string name="derive_keystore_tip">Please copy and paste the keystore file to a safe, offline place to save. Dont save to email, notepad, web, chat, etc., very dangerous</string>
+    <string name="derive_keystore_tip3">If you want to save online, it is recommended to save the keystore with a password storage software such as 1Password with a higher security level.</string>
+    <string name="derive_keystore_tip4">The QR code is forbidden to save, take screenshots, and take photos. It is only for users to scan directly in a secure environment to easily import the wallet.</string>
+    <string name="derive_keystore_tip5">Please use it if you are surrounded by no one and no camera. Once the QR code is acquired, it will cause irreparable asset losses.</string>
+    <string name="derive_keystore_tip_title2">Do not use network transmission</string>
+    <string name="derive_keystore_tip_title3">Password safe save</string>
+    <string name="derive_keystore_tip_title4">Direct scanning only</string>
+    <string name="derive_keystore_tip_title5">Use in a safe environment</string>
+    <string name="derive_keystore_copy">Copy Keystore</string>
+
+    <string name="deriving_wallet_tip">Export wallet...</string>
+    <string name="loading_wallet_tip">Import into the wallet...</string>
+    <string name="deleting_wallet_tip">Delete wallet...</string>
+    <string name="creating_wallet_tip">Create a wallet...</string>
+    <string name="saving_wallet_tip">Save in the wallet...</string>
+
+    <string name="sent">Transfer out</string>
+    <string name="create">Create contract</string>
+    <string name="received">Transfer</string>
+    <string name="btn_confirm">confirm</string>
+
+
+    <string name="subject_transaction_detail">Transaction Details</string>
+
+    <!-- Subtitles -->
+    <string name="subtitle_from">Payment address</string>
+    <string name="subtitle_to">Collection address</string>
+    <string name="subtitle_gas_fee">Miner fee</string>
+    <string name="label_gas_limit">Gas Limit</string>
+    <string name="label_gas_price">Gas Price</string>
+    <string name="subtitle_transaction_num">Transaction number #</string>
+    <string name="subtitle_transaction_time">transaction hour</string>
+    <string name="subtitle_block_num">Block #</string>
+    <string name="action_more_details">See details in the block browser</string>
+
+    <string name="addr_error_tips">The address is incorrectly filled out</string>
+    <string name="amount_error_tips">The amount is incorrectly filled out</string>
+
+
+    <string name="hint_contract_address">Contract address</string>
+    <string name="hint_contract_symbol">Token symbol</string>
+    <string name="hint_contract_decimals">Decimals</string>
+    <string name="action_save">save</string>
+
+    <string name="error_field_required">Required field</string>
+    <string name="error_invalid_address">Invalid address</string>
+    <string name="error_must_numeric">Must be a number</string>
+
+    <string name="button_ok">Got it</string>
+    <string name="title_dialog_sending">send...</string>
+    <string name="transaction_succeeded">Successful transaction</string>
+    <string name="error_transaction_failed">Transaction error</string>
+    <string name="copy">copy</string>
+
+
+    <string name="title_dialog_add_account">Add wallet</string>
+
+    <string name="action_create_new_account">Create a new wallet</string>
+
+    <string name="action_import">Import</string>
+    <string name="already_have_account">Existing wallet account?</string>
+
+    <string name="empty" />
+
+    <!-- Intro resources-->
+    <string name="intro_title_first_page"><![CDATA[Private & Secure]]></string>
+    <string name="intro_title_second_page">Fully Transparent</string>
+    <string name="intro_title_third_page">Ultra reliable</string>
+    <string name="intro_message_first_page">Private keys never leave your device.</string>
+    <string name="intro_message_second_page">Code is open sourced (GPL-3.0 license) and fully audited.</string>
+    <string name="intro_message_third_page">The fastest Conflux wallet experience on mobile.</string>
+
+    <string name="welcome_erc20_label_title">compatible ERC20 </string>
+    <string name="welcome_erc20_label_description">Support all ERC20 tokens</string>
+
+    <string name="ask_help_desc_1"></string>
+
+
+</resources>
