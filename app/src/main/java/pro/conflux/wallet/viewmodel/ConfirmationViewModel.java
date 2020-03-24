@@ -98,7 +98,7 @@ public class ConfirmationViewModel extends BaseViewModel {
     public void createTransaction(String password, String to, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit) {
         progress.postValue(true);
 
-        createTransactionInteract.createEthTransaction(defaultWallet.getValue(), to, amount, gasPrice, gasLimit, password)
+        createTransactionInteract.createCfxTransaction(defaultWallet.getValue(), to, amount, gasPrice, gasLimit, password)
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::onCreateTransaction, this::onError);
 

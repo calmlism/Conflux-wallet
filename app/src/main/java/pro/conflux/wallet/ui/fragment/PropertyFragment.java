@@ -430,9 +430,9 @@ public class PropertyFragment extends BaseFragment implements View.OnClickListen
     }
 
     public void showDrawerWallets(final List<CfxWallet> cfxWallets) {
-        for (int i = 0; i < cfxWallets.size(); i++) {
-            LogUtils.i("PropertyFragment", "Cfxwallets" + cfxWallets.get(i).toString());
-        }
+//        for (int i = 0; i < cfxWallets.size(); i++) {
+//            LogUtils.i("PropertyFragment", "Cfxwallets" + cfxWallets.get(i).toString());
+//        }
         drawerWalletAdapter = new DrawerWalletAdapter(getContext(), cfxWallets, R.layout.list_item_drawer_property_wallet);
         lvWallet.setAdapter(drawerWalletAdapter);
         lvWallet.setOnItemClickListener(new AdapterView.OnItemClickListener() {

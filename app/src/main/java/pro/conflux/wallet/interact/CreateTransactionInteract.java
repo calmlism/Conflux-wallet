@@ -49,7 +49,7 @@ public class CreateTransactionInteract {
     }
 
     // transfer ether
-    public Single<String>  createEthTransaction(CfxWallet from, String to, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit, String password) {
+    public Single<String>  createCfxTransaction(CfxWallet from, String to, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit, String password) {
 
         final Cfx cfx = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
 
