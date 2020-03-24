@@ -79,7 +79,7 @@ public class TokenRepository implements TokenRepositoryType {
                     .blockingGet();
             e.onNext(tokens);
 
-            updateTokenInfoCache(defaultNetwork, walletAddress);
+//            updateTokenInfoCache(defaultNetwork, walletAddress);//更新接口下的钱包关联绑定的token数据，这里不用，所以屏蔽
             tokens = tokenLocalSource.fetch(defaultNetwork,  walletAddress)
                         .map(items -> {
                             int len = items.length;
