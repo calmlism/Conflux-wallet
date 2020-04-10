@@ -190,7 +190,7 @@ public class CFXWalletUtils {
         CfxWallet cfxWallet = new CfxWallet();
         cfxWallet.setName(walletName);
         //cfxWallet.setAddress(Keys.toChecksumAddress(keyStoreFile.getAddress()));//钱包地址特殊处理
-        cfxWallet.setAddress("0x"+keyStoreFile.getAddress());//这里去掉上面的特殊处理，解决大写钱包地址问题
+        cfxWallet.setAddress("0x1"+keyStoreFile.getAddress().substring(1));//这里去掉上面的特殊处理，解决大写钱包地址问题
         cfxWallet.setKeystorePath(destination.getAbsolutePath());
         cfxWallet.setPassword(Md5Utils.md5(pwd));
         return cfxWallet;

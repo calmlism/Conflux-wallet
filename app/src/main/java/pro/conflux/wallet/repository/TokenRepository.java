@@ -189,7 +189,7 @@ public class TokenRepository implements TokenRepositoryType {
             org.cfx.abi.datatypes.Function function, String contractAddress, String walletAddress) throws Exception {
         String encodedFunction = FunctionEncoder.encode(function);
         CfxGetTransactionCount cfxGetTransactionCount = web3j
-                .cfxGetTransactionCount(walletAddress, DefaultBlockParameterName.LATEST)   //
+                .cfxGetNonce(walletAddress, DefaultBlockParameterName.LATEST)   //
                 .send();
         BigInteger nonceValue= cfxGetTransactionCount.getTransactionCount();
 

@@ -7,6 +7,7 @@ import org.cfx.protocol.Cfx;
 import org.cfx.protocol.core.methods.request.Transaction;
 import org.cfx.protocol.core.methods.response.CfxEstimateGas;
 import org.cfx.protocol.core.methods.response.CfxGasPrice;
+import org.cfx.protocol.core.methods.response.UsedGasAndCollateralResponse;
 import org.cfx.protocol.http.HttpService;
 
 import java.io.IOException;
@@ -160,11 +161,11 @@ public class FetchGasSettingsInteract {
 
         final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
         try {
-            CfxEstimateGas cfxEstimateGas = web3j.cfxEstimateGas(transaction).send();
+            UsedGasAndCollateralResponse cfxEstimateGas = web3j.cfxEstimateGasAndCollateral(transaction).send();
             if (cfxEstimateGas.hasError()){
                 throw new RuntimeException(cfxEstimateGas.getError().getMessage());
             }
-            return cfxEstimateGas.getAmountUsed();
+            return cfxEstimateGas.getValue().getStorageCollateralized();
         } catch (IOException e) {
             throw new RuntimeException("net error");
         }
