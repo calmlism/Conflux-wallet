@@ -77,7 +77,8 @@ public class TransactionDetailActivity extends BaseActivity implements View.OnCl
     @Override
     public void initDatas() {
 
-        transaction = getIntent().getParcelableExtra(TRANSACTION);
+        transaction = (Transaction)getIntent().getParcelableExtra(TRANSACTION);
+
         if (transaction == null) {
             finish();
             return;

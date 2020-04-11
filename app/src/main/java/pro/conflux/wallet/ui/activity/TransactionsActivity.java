@@ -55,7 +55,7 @@ public class TransactionsActivity extends BaseActivity {
 
     @Override
     public void configViews() {
-//        swipeRefresh.setRefreshing(true);
+        swipeRefresh.setRefreshing(true);
     }
 
     @OnClick(R.id.rl_btn)
