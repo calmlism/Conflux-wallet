@@ -20,6 +20,7 @@ import org.cfx.protocol.http.HttpService;
 
 import org.cfx.utils.Numeric;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,10 @@ public class CreateTransactionInteract {
                 .flatMap(nonce -> Single.fromCallable( () -> {
 
             Credentials credentials = WalletUtils.loadCredentials(password,  from.getKeystorePath());
-            RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount);
+            BigInteger storageLimit = BigInteger.valueOf(100000) ;
+            BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
+            BigInteger chainId = BigInteger.valueOf(0);
+            RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount,storageLimit,epochHeight,chainId);
 
             byte[] signedMessage =TransactionEncoder.signMessage(rawTransaction,credentials);
 
@@ -74,17 +78,20 @@ public class CreateTransactionInteract {
 
     // transfer ERC20
     public Single<String>  createERC20Transfer(CfxWallet from,  String to, String contractAddress, BigInteger amount, BigInteger gasPrice, BigInteger gasLimit, String password) {
-        final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
+        final Cfx cfx = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
 
         String callFuncData = TokenRepository.createTokenTransferData(to, amount);
 
 
-        return networkRepository.getLastTransactionNonce(web3j, from.address)
+        return networkRepository.getLastTransactionNonce(cfx, from.address)
                 .flatMap(nonce -> Single.fromCallable( () -> {
 
             Credentials credentials = WalletUtils.loadCredentials(password,  from.getKeystorePath());
+            BigInteger storageLimit = BigInteger.valueOf(100000) ;
+            BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
+            BigInteger chainId = BigInteger.valueOf(0);
             RawTransaction rawTransaction = RawTransaction.createTransaction(
-                    nonce, gasPrice, gasLimit, contractAddress, callFuncData);
+                    nonce, gasPrice, gasLimit, contractAddress, callFuncData,storageLimit,epochHeight,chainId);
 
             LogUtils.d("rawTransaction:" + rawTransaction);
 
@@ -92,7 +99,7 @@ public class CreateTransactionInteract {
 
             String hexValue = Numeric.toHexString(signedMessage);
 
-            CfxSendTransaction cfxSendTransaction = web3j.cfxSendRawTransaction(hexValue).sendAsync().get();
+            CfxSendTransaction cfxSendTransaction = cfx.cfxSendRawTransaction(hexValue).sendAsync().get();
 
             return cfxSendTransaction.getTransactionHash();
 
@@ -100,15 +107,14 @@ public class CreateTransactionInteract {
                         .observeOn(AndroidSchedulers.mainThread()));
     }
 
-    public Single<String> create(CfxWallet from, String to, BigInteger subunitAmount, BigInteger gasPrice, BigInteger gasLimit,  String data, String pwd)
-    {
+    public Single<String> create(CfxWallet from, String to, BigInteger subunitAmount, BigInteger gasPrice, BigInteger gasLimit,  String data, String pwd) throws IOException {
         return createTransaction(from, to, subunitAmount, gasPrice, gasLimit, data, pwd)
                                 .subscribeOn(Schedulers.computation())
                                 .observeOn(AndroidSchedulers.mainThread());
     }
 
 
-    public Single<String> createContract(CfxWallet from, BigInteger gasPrice, BigInteger gasLimit, String data, String pwd) {
+    public Single<String> createContract(CfxWallet from, BigInteger gasPrice, BigInteger gasLimit, String data, String pwd) throws IOException {
         return createTransaction(from, gasPrice, gasLimit, data, pwd)
                                 .subscribeOn(Schedulers.computation())
                                 .observeOn(AndroidSchedulers.mainThread());
@@ -140,11 +146,14 @@ public class CreateTransactionInteract {
         });
     }
 
-    public Single<String> createTransaction(CfxWallet from, String toAddress, BigInteger subunitAmount, BigInteger gasPrice, BigInteger gasLimit, String data, String password) {
+    public Single<String> createTransaction(CfxWallet from, String toAddress, BigInteger subunitAmount, BigInteger gasPrice, BigInteger gasLimit, String data, String password) throws IOException {
         final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
+        BigInteger storageLimit = BigInteger.valueOf(100000) ;
+        BigInteger epochHeight = web3j.cfxBlockNumber().send().getBlockNumber();
+        BigInteger chainId = BigInteger.valueOf(0);
 
         return networkRepository.getLastTransactionNonce(web3j, from.address)
-                .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit,toAddress, subunitAmount,  data))
+                .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit,toAddress, subunitAmount,  data,storageLimit,epochHeight,chainId))
                 .flatMap(rawTx -> signEncodeRawTransaction(rawTx, password, from, networkRepository.getDefaultNetwork().chainId))
                 .flatMap(signedMessage -> Single.fromCallable( () -> {
                     CfxSendTransaction raw = web3j
@@ -159,12 +168,15 @@ public class CreateTransactionInteract {
 
 
     // for DApp create contract transaction
-    public Single<String> createTransaction(CfxWallet from, BigInteger gasPrice, BigInteger gasLimit, String data, String password) {
+    public Single<String> createTransaction(CfxWallet from, BigInteger gasPrice, BigInteger gasLimit, String data, String password) throws IOException {
 
         final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
+        BigInteger storageLimit = BigInteger.valueOf(100000) ;
+        BigInteger epochHeight = web3j.cfxBlockNumber().send().getBlockNumber();
+        BigInteger chainId = BigInteger.valueOf(0);
 
         return networkRepository.getLastTransactionNonce(web3j, from.address)
-                .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit, BigInteger.ZERO, data))
+                .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit, BigInteger.ZERO, data,storageLimit,epochHeight,chainId))
                 .flatMap(rawTx -> signEncodeRawTransaction(rawTx, password, from, networkRepository.getDefaultNetwork().chainId))
                 .flatMap(signedMessage -> Single.fromCallable( () -> {
                     CfxSendTransaction raw = web3j
@@ -180,7 +192,9 @@ public class CreateTransactionInteract {
 
 
     // for DApp  create contract  transaction
-    private Single<RawTransaction> getRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, BigInteger value, String data)
+    private Single<RawTransaction> getRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, BigInteger value, String data,BigInteger storageLimit,
+                                                     BigInteger epochHeight,
+                                                     BigInteger chainId)
     {
         return Single.fromCallable(() ->
                 RawTransaction.createContractTransaction(
@@ -188,10 +202,12 @@ public class CreateTransactionInteract {
                         gasPrice,
                         gasLimit,
                         value,
-                        data));
+                        data,storageLimit,epochHeight,chainId));
     }
 
-    private Single<RawTransaction> getRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to , BigInteger value, String data)
+    private Single<RawTransaction> getRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to , BigInteger value, String data,BigInteger storageLimit,
+                                                     BigInteger epochHeight,
+                                                     BigInteger chainId)
     {
         return Single.fromCallable(() ->
                 RawTransaction.createTransaction(
@@ -200,7 +216,7 @@ public class CreateTransactionInteract {
                         gasLimit,
                         to,
                         value,
-                        data));
+                        data,storageLimit,epochHeight,chainId));
     }
 
     private  Single<byte[]> signEncodeRawTransaction(RawTransaction rtx, String password, CfxWallet wallet, int chainId) {
