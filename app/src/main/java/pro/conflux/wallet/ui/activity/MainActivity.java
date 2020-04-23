@@ -15,6 +15,7 @@ import pro.conflux.wallet.ChainWalletApp;
 import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseActivity;
 import pro.conflux.wallet.ui.adapter.HomePagerAdapter;
+import pro.conflux.wallet.ui.fragment.DappFragment;
 import pro.conflux.wallet.ui.fragment.MineFragment;
 import pro.conflux.wallet.ui.fragment.PropertyFragment;
 import pro.conflux.wallet.utils.ToastUtils;
@@ -45,6 +46,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvMine;
     @BindView(R.id.lly_mine)
     LinearLayout llyMine;
+
+    @BindView(R.id.iv_dapp)
+    ImageView ivDapp;
+    @BindView(R.id.tv_dapp)
+    TextView tvDapp;
+    @BindView(R.id.lly_dapp)
+    LinearLayout llyDapp;
+
 
     private HomePagerAdapter homePagerAdapter;
 
@@ -79,13 +88,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ivMall.setSelected(true);
         tvMall.setSelected(true);
 
+
         llyMall.setOnClickListener(this);
         llyMine.setOnClickListener(this);
+        llyDapp.setOnClickListener(this);
 
-        vpHome.setOffscreenPageLimit(2);
+        vpHome.setOffscreenPageLimit(3);
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new PropertyFragment());
-//        fragmentList.add(new DiscoveryFragment());
+        fragmentList.add(new DappFragment());//dapp
         fragmentList.add(new MineFragment());
         homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager(), fragmentList);
         vpHome.setAdapter(homePagerAdapter);
@@ -119,15 +130,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         setAllUnselected();
         switch (v.getId()) {
-            case R.id.lly_mall:// 商场
+            case R.id.lly_mall:
                 ivMall.setSelected(true);
                 tvMall.setSelected(true);
                 vpHome.setCurrentItem(0, false);
                 break;
+            case R.id.lly_dapp:// DAPP
+                ivDapp.setSelected(true);
+                tvDapp.setSelected(true);
+                vpHome.setCurrentItem(1, false);
+                break;
             case R.id.lly_mine:// 我的
                 ivMine.setSelected(true);
                 tvMine.setSelected(true);
-                vpHome.setCurrentItem(1, false);
+                vpHome.setCurrentItem(2, false);
                 break;
         }
     }
@@ -137,6 +153,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvMall.setSelected(false);
         ivMine.setSelected(false);
         tvMine.setSelected(false);
+        ivDapp.setSelected(false);
+        tvDapp.setSelected(false);
     }
 
     @Override

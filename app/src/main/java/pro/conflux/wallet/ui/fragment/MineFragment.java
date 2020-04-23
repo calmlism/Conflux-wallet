@@ -2,7 +2,6 @@ package pro.conflux.wallet.ui.fragment;
 
 import android.content.Intent;
 import android.view.View;
-
 import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseFragment;
 import pro.conflux.wallet.ui.activity.ContactsActivity;
@@ -16,6 +15,9 @@ import butterknife.OnClick;
 
 
 public class MineFragment extends BaseFragment {
+
+
+
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_mine;
@@ -68,3 +70,4 @@ public class MineFragment extends BaseFragment {
         }
     }
 }
+

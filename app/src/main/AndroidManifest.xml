@@ -67,6 +67,9 @@
         <activity android:name="pro.conflux.wallet.ui.activity.ExportKeystoreActivity" />
         <activity android:name="pro.conflux.wallet.ui.activity.HelpActivity" />
         <activity android:name="pro.conflux.wallet.ui.activity.TransactionDetailActivity"></activity>
+        <activity android:name="pro.conflux.wallet.ui.activity.BountyViewActivity" />
+        <activity android:name="pro.conflux.wallet.ui.activity.ForumViewActivity" />
+        <activity android:name="pro.conflux.wallet.ui.activity.ScanViewActivity" />
     </application>
 
 </manifest>
