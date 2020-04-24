@@ -133,12 +133,10 @@
 
     <string name="load_wallet_by_mnemonic_hint">助记词，按空格分隔</string>
     <string name="load_wallet_by_mnemonic_input_tip">请检查您的助记词</string>
-    <string name="load_wallet_by_mnemonic_standard">m/44\'/60\'/0\'/0/0</string>
-    <string name="load_wallet_by_mnemonic_standard_ledger">m/44\'/60\'/0\'/0</string>
-    <string name="load_wallet_by_mnemonic_standard_custom">m/44\'/60\'/1\'/0/0</string>
-    <string name="load_wallet_by_mnemonic_standard_jaxx_option">m/44\'/60\'/0\'/0/0 (CFX)</string>
-    <string name="load_wallet_by_mnemonic_standard_ledger_option">m/44\'/60\'/0\'/0 Ledger (CFX)</string>
-    <string name="load_wallet_by_mnemonic_standard_custom_option">m/44\'/60\'/1\'/0/0 自定义路径</string>
+    <string name="load_wallet_by_mnemonic_standard">m/44\'/503\'/0\'/0/0</string>
+    <string name="load_wallet_by_mnemonic_standard_custom">m/44\'/503\'/0\'/0/0</string>
+    <string name="load_wallet_by_mnemonic_standard_jaxx_option">m/44\'/503\'/0\'/0/0 (CFX)</string>
+    <string name="load_wallet_by_mnemonic_standard_custom_option">m/44\'/503\'/0\'/0/0 自定义路径</string>
     <string name="load_wallet_by_mnemonic_help">什么是助记词？</string>
     <string name="load_wallet_already_exist">钱包已存在</string>
 

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Conflux-wallet.iml" filepath="$PROJECT_DIR$/Conflux-wallet.iml" group="Conflux-wallet" />
+      <module fileurl="file://$PROJECT_DIR$/app/Conflux-wallet-app.iml" filepath="$PROJECT_DIR$/app/Conflux-wallet-app.iml" group="Conflux-wallet/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Conflux-wallet/app" />
+      <module fileurl="file://$PROJECT_DIR$/codes-Conflux-wallet.iml" filepath="$PROJECT_DIR$/codes-Conflux-wallet.iml" group="Conflux-wallet" />
     </modules>
   </component>
 </project>

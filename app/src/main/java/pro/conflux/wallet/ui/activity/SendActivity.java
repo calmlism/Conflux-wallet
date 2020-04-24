@@ -404,7 +404,7 @@ public class SendActivity extends BaseActivity {
         hideDialog();
         String message = "";
         if(error.code==1){
-            message = "密码错误！";
+            message = "错误！";
         }else{
             message = error.message;
         }

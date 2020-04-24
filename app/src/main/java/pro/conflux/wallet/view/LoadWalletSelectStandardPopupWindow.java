@@ -17,10 +17,8 @@ public class LoadWalletSelectStandardPopupWindow extends PopupWindow implements 
 
     private View contentView;
     private final TextView tvJaxx;
-    private final TextView tvLedger;
     private final TextView tvCustom;
     private final ImageView ivJaxx;
-    private final ImageView ivLedger;
     private final ImageView ivCustom;
     private int selection = 0;
 
@@ -35,14 +33,11 @@ public class LoadWalletSelectStandardPopupWindow extends PopupWindow implements 
         contentView = inflater.inflate(R.layout.popup_load_wallet_select_standard, null);
         this.setContentView(contentView);
         contentView.findViewById(R.id.rl_jaxx).setOnClickListener(this);
-        contentView.findViewById(R.id.rl_ledger).setOnClickListener(this);
         contentView.findViewById(R.id.rl_custom).setOnClickListener(this);
         tvJaxx = (TextView)contentView.findViewById(R.id.tv_standard_jaxx);
         tvJaxx.setSelected(true);
-        tvLedger = (TextView)contentView.findViewById(R.id.tv_standard_ledger);
         tvCustom = (TextView)contentView.findViewById(R.id.tv_standard_custom);
         ivJaxx = (ImageView)contentView.findViewById(R.id.iv_standard_jaxx);
-        ivLedger = (ImageView)contentView.findViewById(R.id.iv_standard_ledger);
         ivCustom = (ImageView)contentView.findViewById(R.id.iv_standard_custom);
         setProperty();
     }
@@ -50,8 +45,6 @@ public class LoadWalletSelectStandardPopupWindow extends PopupWindow implements 
     private void initSelection() {
         tvJaxx.setSelected(false);
         ivJaxx.setVisibility(View.GONE);
-        tvLedger.setSelected(false);
-        ivLedger.setVisibility(View.GONE);
         tvCustom.setSelected(false);
         ivCustom.setVisibility(View.GONE);
     }
@@ -78,13 +71,9 @@ public class LoadWalletSelectStandardPopupWindow extends PopupWindow implements 
                 tvJaxx.setSelected(true);
                 ivJaxx.setVisibility(View.VISIBLE);
                 break;
-            case R.id.rl_ledger:
-                selection = 1;
-                tvLedger.setSelected(true);
-                ivLedger.setVisibility(View.VISIBLE);
-                break;
+
             case R.id.rl_custom:
-                selection = 2;
+                selection = 1;
                 tvCustom.setSelected(true);
                 ivCustom.setVisibility(View.VISIBLE);
                 break;

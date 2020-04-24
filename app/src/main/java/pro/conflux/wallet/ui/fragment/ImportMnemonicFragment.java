@@ -101,11 +101,6 @@ public class ImportMnemonicFragment extends BaseFragment {
                         etStandard.setEnabled(false);
                         break;
                     case 1:
-                        etStandard.setText(R.string.load_wallet_by_mnemonic_standard_ledger);
-                        cfxType = CFXWalletUtils.CFX_LEDGER_TYPE;
-                        etStandard.setEnabled(false);
-                        break;
-                    case 2:
                         etStandard.setText(R.string.load_wallet_by_mnemonic_standard_custom);
                         cfxType = CFXWalletUtils.CFX_CUSTOM_TYPE;
                         etStandard.setEnabled(true);

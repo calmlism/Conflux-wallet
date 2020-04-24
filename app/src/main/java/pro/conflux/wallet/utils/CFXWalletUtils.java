@@ -43,9 +43,8 @@ public class CFXWalletUtils {
     /**
      * 通用基于bip44协议的助记词路径 （imtoken jaxx Metamask mycfxwallet）
      */
-    public static String CFX_JAXX_TYPE = "m/44'/60'/0'/0/0";
-    public static String CFX_LEDGER_TYPE = "m/44'/60'/0'/0";
-    public static String CFX_CUSTOM_TYPE = "m/44'/60'/1'/0/0";
+    public static String CFX_JAXX_TYPE = "m/44'/503'/0'/0/0";
+    public static String CFX_CUSTOM_TYPE = "m/44'/503'/0'/0/0";
 
     /**
      * 创建助记词，并通过助记词创建钱包
