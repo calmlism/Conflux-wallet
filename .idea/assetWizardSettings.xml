@@ -50,7 +50,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="93" />
+                                                <entry key="scalingPercent" value="0" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -74,7 +74,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="96" />
+                                                <entry key="scalingPercent" value="70" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -87,6 +87,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -96,9 +97,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundImage" value="D:\bg.png" />
-                                      <entry key="foregroundImage" value="E:\技术资料\Conflux\fc_token.png" />
-                                      <entry key="outputName" value="fc_token" />
+                                      <entry key="backgroundImage" value="F:\bg.png" />
+                                      <entry key="foregroundImage" value="E:\ic_mine_dapps_unselected.png" />
+                                      <entry key="outputName" value="ic_mine_dapps_unselected" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -154,6 +155,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>
