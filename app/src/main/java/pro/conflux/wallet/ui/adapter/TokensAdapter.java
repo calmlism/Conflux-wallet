@@ -33,7 +33,7 @@ public class TokensAdapter extends BaseQuickAdapter<Token, BaseViewHolder> {
         helper.setText(R.id.tv_property_cny, token.value);
         if(token.tokenInfo.symbol.equals("FC")){
 
-            helper.setImageResource(R.id.logo,R.mipmap.fc_token);
+            helper.setImageResource(R.id.logo,R.mipmap.fanscoin);
 
         }else{
             helper.setImageResource(R.id.logo,R.mipmap.ic_launcher);

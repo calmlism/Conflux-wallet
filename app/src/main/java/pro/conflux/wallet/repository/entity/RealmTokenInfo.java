@@ -10,6 +10,7 @@ public class RealmTokenInfo extends RealmObject {
     private String symbol;
     private int decimals;
     private long addedTime;
+    private String type;
 
     public int getDecimals() {
         return decimals;
@@ -25,6 +26,13 @@ public class RealmTokenInfo extends RealmObject {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

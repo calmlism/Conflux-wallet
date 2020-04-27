@@ -132,7 +132,7 @@ public class TokenRepository implements TokenRepositoryType {
         return tokenLocalSource.put(
                 cfxNetworkRepository.getDefaultNetwork(),
                 walletAddress,
-                new TokenInfo(address, "", symbol, decimals));
+                new TokenInfo(address, "", symbol, decimals,"CRC20"));
     }
 
     private void updateTokenInfoCache(NetworkInfo defaultNetwork, String walletAddress) {

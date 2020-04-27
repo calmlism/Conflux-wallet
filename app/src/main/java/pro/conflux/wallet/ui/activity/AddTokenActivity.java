@@ -75,6 +75,7 @@ public class AddTokenActivity extends BaseActivity {
         public boolean added;
         public int iconId;
 
+
         public TokenItem(TokenInfo tokenInfo, boolean added, int id) {
             this.tokenInfo = tokenInfo;
             this.added = added;
@@ -86,8 +87,8 @@ public class AddTokenActivity extends BaseActivity {
     public void initDatas() {
 
         // TODO
-        mItems.add(new TokenItem(new TokenInfo("", "CFX", "CFX", 18), true, R.mipmap.wallet_logo_demo));
-        mItems.add(new TokenItem(new TokenInfo("0x88a8f9b1835ae66b6f1da3c930b7d11220bebf78", "Fans Coin", "FC", 18), false, R.mipmap.fc_token));
+        mItems.add(new TokenItem(new TokenInfo("", "CFX", "CFX", 18,"CRC20"), true, R.mipmap.wallet_logo_demo));
+        mItems.add(new TokenItem(new TokenInfo("0x88a8f9b1835ae66b6f1da3c930b7d11220bebf78", "Fans Coin", "FC", 18,"CRC721"), false, R.mipmap.fanscoin));
 
         tokensViewModelFactory = new TokensViewModelFactory();
         tokensViewModel = ViewModelProviders.of(this, tokensViewModelFactory)
@@ -113,7 +114,6 @@ public class AddTokenActivity extends BaseActivity {
             }
         }
 
-        // TODO:  Add missed for tokens
 
         mAdapter = new AddTokenListAdapter(this, mItems, R.layout.list_item_add_ico_property);
         tokenList.setAdapter(mAdapter);
