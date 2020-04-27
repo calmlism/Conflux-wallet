@@ -50,13 +50,13 @@ public class GlideImageLoader extends ImageLoader {
 
     @SuppressLint("CheckResult")
     private static void loadImage(final ImageView view, Object img, @DrawableRes int defaultImage, @DrawableRes int errorImage) {
-        // 不能崩
+        //
         if (view == null) {
             LogUtils.e("GlideUtils -> display -> imageView is null");
             return;
         }
         Context context = view.getContext();
-        // View你还活着吗？
+        // View
         if (context instanceof Activity) {
             if (((Activity) context).isFinishing()) {
                 return;

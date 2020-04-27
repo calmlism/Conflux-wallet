@@ -27,7 +27,7 @@ public class CFXMnemonic {
      * 通用的以太坊基于bip44协议的助记词路径 （imtoken jaxx Metamask myetherwallet）
      */
     private static String ETH_TYPE = "m/44'/60'/0'/0/0";
-
+    private static String CFX_TYPE = "m/44'/503'/0'/0/0";
     private static SecureRandom secureRandom = new SecureRandom();
 
     public static void main(String[] args) {
