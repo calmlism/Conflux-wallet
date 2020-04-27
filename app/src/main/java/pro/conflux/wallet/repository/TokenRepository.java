@@ -99,7 +99,6 @@ public class TokenRepository implements TokenRepositoryType {
                                     /* Quietly */
                                 }
 
-                                LogUtils.d("balance:" + balance);
                                 if (balance == null || balance.compareTo(BigDecimal.ZERO) == 0) {
                                     result[i] = new Token(items[i], "0");
                                 } else {
@@ -163,8 +162,11 @@ public class TokenRepository implements TokenRepositoryType {
     }
 
 
+    //获取token余额
     private BigDecimal getBalance(String walletAddress, TokenInfo tokenInfo) throws Exception {
+
         org.cfx.abi.datatypes.Function function = balanceOf(walletAddress);
+
         String responseValue = callSmartContractFunction(function, tokenInfo.address, walletAddress);
 
         List<Type> response = FunctionReturnDecoder.decode(
@@ -182,6 +184,7 @@ public class TokenRepository implements TokenRepositoryType {
                 Collections.singletonList(new Address(owner)),
                 Collections.singletonList(new TypeReference<Uint256>() {}));
     }
+
 
     private String callSmartContractFunction(
             org.cfx.abi.datatypes.Function function, String contractAddress, String walletAddress) throws Exception {

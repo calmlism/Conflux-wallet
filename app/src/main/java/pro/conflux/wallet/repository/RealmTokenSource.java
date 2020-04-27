@@ -29,24 +29,6 @@ public class RealmTokenSource implements TokenLocalSource {
                         .sort("addedTime", Sort.ASCENDING)
                         .findAll();
                 int len = realmItems.size();
-//                //添加两个默认显示Token
-//                TokenInfo[] result = new TokenInfo[len + 2];
-//
-//                result[0] = new TokenInfo("", "CFX", "CFX", 18);//默认第一个显示CFX
-//                result[1] = new TokenInfo("0xd29c3302edff23bf425ba6e0ba6e17da16fb287c", "Fans Coin", "FC", 18);//默认第二个显示fc余额
-//
-//                for (int i = 0; i < len; i++) {
-//                    RealmTokenInfo realmItem = realmItems.get(i);
-//                    if (realmItem != null) {
-//                        //已经默认了两个，所以添加时需要从2开始
-//                        result[i + 2] = new TokenInfo(
-//                                realmItem.getAddress(),
-//                                realmItem.getName(),
-//                                realmItem.getSymbol(),
-//                                realmItem.getDecimals());
-//                    }
-//                }
-
 
                 TokenInfo[] result = new TokenInfo[len + 1];
 

@@ -144,9 +144,8 @@ public class PropertyFragment extends BaseFragment implements View.OnClickListen
 
                 Token token = tokenItems.get(position);
 
-                String tokenType = token.tokenInfo.type;//获取token的类型
-                if(tokenType == null)
-                    tokenType = "";
+                String tokenType = token.tokenInfo.type == null ? "" : token.tokenInfo.type;//获取token的类型
+
                 //根据判断的类型进入不同页面
                 switch (tokenType){
 
