@@ -104,7 +104,7 @@ public class TransactionsViewModel extends BaseViewModel {
     }
 
     private void onDefaultWallet(CfxWallet wallet) {
-        LogUtils.d("onDefaultWallet");
+//        LogUtils.d("onDefaultWallet");
         defaultWallet.setValue(wallet);
 //        getBalance();
         fetchTransactions();
@@ -118,7 +118,7 @@ public class TransactionsViewModel extends BaseViewModel {
             ArrayList<Transaction> transactionList = new ArrayList<>();
             LogUtils.d("size:" + transactionList.size());
             for (Transaction t: transactions) {
-                if (t.logs == null || t.logs.length == 0) {
+                if (t.contractCreated == null || t.contractCreated == "null") {
                     transactionList.add(t);
                 }
             }

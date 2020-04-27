@@ -28,12 +28,12 @@ public class CfxNetworkRepository {
 
 private final NetworkInfo[] NETWORKS = new NetworkInfo[] {
         new NetworkInfo(CONFLUX_MAIN_NETWORK_NAME, CFX_SYMBOL,
-                "http://testnet-jsonrpc.conflux-chain.org:12537",
-                "http://testnet-jsonrpc.conflux-chain.org:18084/",
+                "http://mainnet-jsonrpc.conflux-chain.org:12537",
+                "http://47.102.164.229:8885/",
                 "https://www.confluxscan.io/",1, true),
         new NetworkInfo(LOCAL_DEV_NETWORK_NAME, CFX_SYMBOL,
-                "http://testnet-jsonrpc.conflux-chain.org:12537",
-                "http://testnet-jsonrpc.conflux-chain.org:18084/",
+                "http://mainnet-jsonrpc.conflux-chain.org:12537",
+                "http://47.102.164.229:8885/",
                 "https://www.confluxscan.io/",1, false),
 };
     private final SharedPreferenceRepository preferences;

@@ -115,7 +115,7 @@ public class TransactionDetailActivity extends BaseActivity implements View.OnCl
         String symbol;
         long decimals = 18;
         NetworkInfo networkInfo = viewModel.defaultNetwork().getValue();
-        if (transaction.logs == null || transaction.logs.length == 0) {
+        if (transaction.contractCreated == null || transaction.contractCreated == "null") {
             rawValue = transaction.value;
             symbol = networkInfo == null ? "" : networkInfo.symbol;
         } else {

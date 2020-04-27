@@ -3,7 +3,7 @@ package pro.conflux.wallet;
 public abstract class C {
 
     // 获取实时价格（行情 Ticker ） URL
-    public static final String TICKER_API_URL = "http://47.93.151.65:8000";
+    public static final String TICKER_API_URL = "http://127.0.0.1:8000";
 
     public static final String CONFLUX_MAIN_NETWORK_NAME = "Mainnet";
 

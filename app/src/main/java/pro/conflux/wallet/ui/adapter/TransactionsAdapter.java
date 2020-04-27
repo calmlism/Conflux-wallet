@@ -14,6 +14,7 @@ import pro.conflux.wallet.entity.TransactionOperation;
 import pro.conflux.wallet.utils.LogUtils;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class TransactionsAdapter  extends BaseQuickAdapter<Transaction, BaseView
 
     @Override
     protected void convert(BaseViewHolder helper, Transaction transaction) {
-        LogUtils.d(TAG, "convert: helper:" + helper + ", transaction:" + transaction);
+//        LogUtils.d(TAG, "convert: helper:" + helper + ", transaction:" + transaction);
 
         boolean isSent = transaction.from.toLowerCase().equals(defaultAddress.toLowerCase());
         boolean isCreateContract = TextUtils.isEmpty(transaction.to);
@@ -75,10 +76,10 @@ public class TransactionsAdapter  extends BaseQuickAdapter<Transaction, BaseView
 
 
         // If operations include token transfer, display token transfer instead
-        Logs operation = transaction.logs == null
-                || transaction.logs.length == 0 ? null : transaction.logs[0];
+//        Logs operation = transaction.logs == null
+//                || transaction.logs.length == 0 ? null : transaction.logs[0];
 
-        if (operation == null || operation.address == null) {  // default to cfx transaction
+        if (transaction.contractCreated == null || transaction.contractCreated == "null") {  // default to cfx transaction
             valueStr = transaction.value;
 
             if (valueStr.equals("0")) {
@@ -105,8 +106,11 @@ public class TransactionsAdapter  extends BaseQuickAdapter<Transaction, BaseView
 
 
     private String getScaledValue(String valueStr, long decimals) {
+
+        //十六进制转十进制
+        String s = new BigInteger(valueStr.substring(2), 16).toString();
         // Perform decimal conversion
-        BigDecimal value = new BigDecimal(valueStr);
+        BigDecimal value = new BigDecimal(s);
         value = value.divide(new BigDecimal(Math.pow(10, decimals)));
         int scale = SIGNIFICANT_FIGURES - value.precision() + value.scale();
         return value.setScale(scale, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString();
