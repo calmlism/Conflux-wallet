@@ -87,8 +87,8 @@ public class AddTokenActivity extends BaseActivity {
     public void initDatas() {
 
         // TODO
-        mItems.add(new TokenItem(new TokenInfo("", "CFX", "CFX", 18,"CRC20"), true, R.mipmap.wallet_logo_demo));
-        mItems.add(new TokenItem(new TokenInfo("0x88a8f9b1835ae66b6f1da3c930b7d11220bebf78", "Fans Coin", "FC", 18,"CRC721"), false, R.mipmap.fanscoin));
+        mItems.add(new TokenItem(new TokenInfo("", "CFX", "CFX", 18,"CFX"), true, R.mipmap.wallet_logo_demo));
+        mItems.add(new TokenItem(new TokenInfo("0x88a8f9b1835ae66b6f1da3c930b7d11220bebf78", "Fans Coin", "FC", 18,"CRC20"), false, R.mipmap.fanscoin));
 
         tokensViewModelFactory = new TokensViewModelFactory();
         tokensViewModel = ViewModelProviders.of(this, tokensViewModelFactory)
@@ -122,10 +122,10 @@ public class AddTokenActivity extends BaseActivity {
     public void onCheckedChanged(CompoundButton btn, boolean checked){
         TokenItem info = (TokenItem) btn.getTag();
         info.added = checked;
-        LogUtils.d(info.toString() + ", checked:" + checked);
+//        LogUtils.d(info.toString() + ", checked:" + checked);
 
         if (checked) {
-            addTokenViewModel.save(info.tokenInfo.address, info.tokenInfo.symbol, info.tokenInfo.decimals);
+            addTokenViewModel.save(info.tokenInfo.address, info.tokenInfo.symbol, info.tokenInfo.decimals,info.tokenInfo.type);
         }
 
 

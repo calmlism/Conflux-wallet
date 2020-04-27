@@ -67,20 +67,20 @@ public class TokenRepository implements TokenRepositoryType {
         return Observable.create(e -> {
             NetworkInfo defaultNetwork = cfxNetworkRepository.getDefaultNetwork();
 
-            Token[] tokens = tokenLocalSource.fetch(defaultNetwork, walletAddress)
-                    .map(items -> {
-                        int len = items.length;
-                        Token[] result = new Token[len];
-                        for (int i = 0; i < len; i++) {
-                            result[i] = new Token(items[i], null);
-                        }
-                        return result;
-                    })
-                    .blockingGet();
-            e.onNext(tokens);
+//            Token[] tokens = tokenLocalSource.fetch(defaultNetwork, walletAddress)
+//                    .map(items -> {
+//                        int len = items.length;
+//                        Token[] result = new Token[len];
+//                        for (int i = 0; i < len; i++) {
+//                            result[i] = new Token(items[i], null);
+//                        }
+//                        return result;
+//                    })
+//                    .blockingGet();
+//            e.onNext(tokens);
 
 //            updateTokenInfoCache(defaultNetwork, walletAddress);//更新接口下的钱包关联绑定的token数据，这里不用，所以屏蔽
-            tokens = tokenLocalSource.fetch(defaultNetwork,  walletAddress)
+            Token[]  tokens = tokenLocalSource.fetch(defaultNetwork,  walletAddress)
                         .map(items -> {
                             int len = items.length;
                             Token[] result = new Token[len];
@@ -125,14 +125,12 @@ public class TokenRepository implements TokenRepositoryType {
     }
 
     @Override
-    public Completable addToken(String walletAddress, String address, String symbol, int decimals) {
-
-        LogUtils.d("addToken:" + walletAddress + ", address: " + address + ", source:" + tokenLocalSource + ", cfxNetworkRepository:" + cfxNetworkRepository);
+    public Completable addToken(String walletAddress, String address, String symbol, int decimals,String tokenType) {
 
         return tokenLocalSource.put(
                 cfxNetworkRepository.getDefaultNetwork(),
                 walletAddress,
-                new TokenInfo(address, "", symbol, decimals,"CRC20"));
+                new TokenInfo(address, "", symbol, decimals,tokenType));
     }
 
     private void updateTokenInfoCache(NetworkInfo defaultNetwork, String walletAddress) {

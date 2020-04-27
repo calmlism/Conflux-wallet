@@ -13,7 +13,9 @@ import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseActivity;
 import pro.conflux.wallet.entity.Address;
 import pro.conflux.wallet.entity.ErrorEnvelope;
-import pro.conflux.wallet.utils.LogUtils;
+
+import pro.conflux.wallet.utils.UUi;
+import pro.conflux.wallet.view.LoadTokenTypeSelectStandardPopupWindow;
 import pro.conflux.wallet.viewmodel.AddTokenViewModel;
 import pro.conflux.wallet.viewmodel.AddTokenViewModelFactory;
 import com.gyf.barlibrary.ImmersionBar;
@@ -42,6 +44,9 @@ public class AddCustomTokenActivity extends BaseActivity {
     @BindView(R.id.decimals)
     TextView decimals;
 
+    @BindView(R.id.token_type)
+    TextView tokenType;
+
     @BindView(R.id.common_toolbar)
     Toolbar commonToolbar;
 
@@ -63,6 +68,7 @@ public class AddCustomTokenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
+    private LoadTokenTypeSelectStandardPopupWindow popupWindow;
 
     @Override
     public int getLayoutId() {
@@ -100,6 +106,24 @@ public class AddCustomTokenActivity extends BaseActivity {
                 .statusBarDarkFont(true, 1f)
                 .navigationBarColor(R.color.white)
                 .init();
+
+        popupWindow = new LoadTokenTypeSelectStandardPopupWindow(this.mContext);
+        popupWindow.setOnPopupItemSelectedListener(new LoadTokenTypeSelectStandardPopupWindow.OnPopupItemSelectedListener() {
+            @Override
+            public void onSelected(int selection) {
+                switch (selection) {
+                    case 0:
+                        tokenType.setText("CRC20");
+
+                        break;
+                    case 1:
+                        tokenType.setText("CRC721");
+
+                        break;
+
+                }
+            }
+        });
     }
 
 
@@ -108,6 +132,7 @@ public class AddCustomTokenActivity extends BaseActivity {
         String address = this.address.getText().toString();
         String symbol = this.symbol.getText().toString();
         String rawDecimals = this.decimals.getText().toString();
+        String tokenType = this.tokenType.getText().toString();
         int decimals = 0;
 
         if (TextUtils.isEmpty(address)) {
@@ -138,8 +163,7 @@ public class AddCustomTokenActivity extends BaseActivity {
         }
 
         if (isValid) {
-            LogUtils.d("viewModel.save");
-            viewModel.save(address, symbol, decimals);
+            viewModel.save(address, symbol, decimals,tokenType);
         }
     }
 
@@ -157,11 +181,14 @@ public class AddCustomTokenActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.save})
+    @OnClick({R.id.save,R.id.lly_type_memu})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.save:
                 onSave();
+                break;
+            case R.id.lly_type_memu:
+                popupWindow.showAsDropDown(tokenType, 0, UUi.dip2px(10));
                 break;
         }
     }

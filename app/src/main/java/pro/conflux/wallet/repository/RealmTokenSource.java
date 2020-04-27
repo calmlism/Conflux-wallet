@@ -94,6 +94,7 @@ public class RealmTokenSource implements TokenLocalSource {
                     obj.setName(tokenInfo.name);
                     obj.setSymbol(tokenInfo.symbol);
                     obj.setDecimals(tokenInfo.decimals);
+                    obj.setType(tokenInfo.type);
                     obj.setAddedTime(System.currentTimeMillis());
                 });
             }

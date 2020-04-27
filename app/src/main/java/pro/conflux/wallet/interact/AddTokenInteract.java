@@ -16,11 +16,11 @@ public class AddTokenInteract {
         this.tokenRepository = tokenRepository;
     }
 
-    public Completable add(String address, String symbol, int decimals) {
+    public Completable add(String address, String symbol, int decimals,String tokenType) {
         return findDefaultWalletInteract
                 .findDefault()
                 .flatMapCompletable(wallet -> tokenRepository
-                        .addToken(wallet.address, address, symbol, decimals)
+                        .addToken(wallet.address, address, symbol, decimals,tokenType)
                         .observeOn(AndroidSchedulers.mainThread()));
     }
 }

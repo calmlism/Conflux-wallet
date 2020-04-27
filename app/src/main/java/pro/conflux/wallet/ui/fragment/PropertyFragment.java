@@ -142,16 +142,28 @@ public class PropertyFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-                Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
                 Token token = tokenItems.get(position);
 
-                intent.putExtra(C.EXTRA_BALANCE, token.balance);
-                intent.putExtra(C.EXTRA_ADDRESS, currCfxWallet.getAddress());
-                intent.putExtra(C.EXTRA_CONTRACT_ADDRESS, token.tokenInfo.address);
-                intent.putExtra(C.EXTRA_SYMBOL, token.tokenInfo.symbol);
-                intent.putExtra(C.EXTRA_DECIMALS, token.tokenInfo.decimals);
+                String tokenType = token.tokenInfo.type;//获取token的类型
+                if(tokenType == null)
+                    tokenType = "";
+                //根据判断的类型进入不同页面
+                switch (tokenType){
 
-                startActivity(intent);
+                    case "CRC721":
+
+                        break;
+                    default:
+                        Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);
+                        intent.putExtra(C.EXTRA_BALANCE, token.balance);
+                        intent.putExtra(C.EXTRA_ADDRESS, currCfxWallet.getAddress());
+                        intent.putExtra(C.EXTRA_CONTRACT_ADDRESS, token.tokenInfo.address);
+                        intent.putExtra(C.EXTRA_SYMBOL, token.tokenInfo.symbol);
+                        intent.putExtra(C.EXTRA_DECIMALS, token.tokenInfo.decimals);
+                        startActivity(intent);
+                }
+
+
             }
         });
 
