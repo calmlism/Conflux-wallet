@@ -58,6 +58,7 @@ public class AddTokenListAdapter extends BaseAdapter {
         }
 
         holder.setText(R.id.tv_ico_name, items.get(position).tokenInfo.symbol);
+        holder.setText(R.id.type,items.get(position).tokenInfo.type);
         holder.setImageResource(R.id.civ_ico_logo, items.get(position).iconId);
 
         if (items.get(position).added) {

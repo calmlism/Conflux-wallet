@@ -116,7 +116,7 @@ public class TransactionsViewModel extends BaseViewModel {
         // ETH transfer ingore the contract call
         if (TextUtils.isEmpty(tokenAddr)) {
             ArrayList<Transaction> transactionList = new ArrayList<>();
-            LogUtils.d("size:" + transactionList.size());
+//            LogUtils.d("size:" + transactionList.size());
             for (Transaction t: transactions) {
                 if (t.contractCreated == null || t.contractCreated == "null") {
                     transactionList.add(t);

@@ -27,10 +27,11 @@ public class TokensAdapter extends BaseQuickAdapter<Token, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Token token) {
-        Log.d(TAG, "convert: helper:" + helper + ", token:" + token);
+//        Log.d(TAG, "convert: helper:" + helper + ", token:" + token);
         helper.setText(R.id.symbol, token.tokenInfo.symbol);
         helper.setText(R.id.balance, token.balance);
         helper.setText(R.id.tv_property_cny, token.value);
+        helper.setText(R.id.type,token.tokenInfo.type);
         if(token.tokenInfo.symbol.equals("FC")){
 
             helper.setImageResource(R.id.logo,R.mipmap.fanscoin);

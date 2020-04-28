@@ -32,7 +32,7 @@ public class RealmTokenSource implements TokenLocalSource {
 
                 TokenInfo[] result = new TokenInfo[len + 1];
 
-                result[0] = new TokenInfo("", "CFX", "CFX", 18,"CFX");//默认第一个显示CFX
+                result[0] = new TokenInfo("", "CFX", "CFX", 18,"BASE");//默认第一个显示CFX
 
                 for (int i = 0; i < len; i++) {
                     RealmTokenInfo realmItem = realmItems.get(i);
