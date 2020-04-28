@@ -162,7 +162,13 @@ public class TokenRepository implements TokenRepositoryType {
     }
 
 
-    //获取token余额
+    /**
+     * 获取token余额
+     * @param walletAddress
+     * @param tokenInfo
+     * @return
+     * @throws Exception
+     */
     private BigDecimal getBalance(String walletAddress, TokenInfo tokenInfo) throws Exception {
 
         org.cfx.abi.datatypes.Function function = balanceOf(walletAddress);
@@ -178,12 +184,53 @@ public class TokenRepository implements TokenRepositoryType {
         }
     }
 
+    /**
+     * 获取指定地址指定索引的tokenid信息
+     * @param walletAddress
+     * @param index
+     * @param tokenInfo
+     * @return
+     * @throws Exception
+     */
+    private String getTokenOfOwnerByIndex(String walletAddress,int index, TokenInfo tokenInfo) throws Exception {
+
+        org.cfx.abi.datatypes.Function function = tokenOfOwnerByIndex(walletAddress,index);
+
+        String responseValue = callSmartContractFunction(function, tokenInfo.address, walletAddress);
+
+        List<Type> response = FunctionReturnDecoder.decode(
+                responseValue, function.getOutputParameters());
+        if (response.size() == 1) {
+            return ((Address) response.get(0)).getValue();
+        } else {
+            return null;
+        }
+    }
+
     private static org.cfx.abi.datatypes.Function balanceOf(String owner) {
         return new org.cfx.abi.datatypes.Function(
                 "balanceOf",
                 Collections.singletonList(new Address(owner)),
                 Collections.singletonList(new TypeReference<Uint256>() {}));
     }
+
+
+    /**
+     * 获取指定地址下的索引的tokenid
+     * @param owner
+     * @param index
+     * @return
+     */
+    private static org.cfx.abi.datatypes.Function tokenOfOwnerByIndex(String owner, int index){
+        List<Type> params = Arrays.<Type>asList(new Address(owner), new Uint256(index));
+        List<TypeReference<?>> returnTypes = Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {
+        });
+        return new org.cfx.abi.datatypes.Function(
+                "tokenOfOwnerByIndex",
+                params,
+                returnTypes);
+    }
+
 
 
     private String callSmartContractFunction(
