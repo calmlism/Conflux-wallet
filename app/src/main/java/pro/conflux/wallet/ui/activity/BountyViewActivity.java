@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
@@ -13,8 +14,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseActivity;
 
@@ -25,6 +29,11 @@ public class BountyViewActivity extends BaseActivity {
     @BindView(R.id.webView_bounty)
     WebView mWebview;
     WebSettings webSettings;
+    @BindView(R.id.lly_back)
+    LinearLayout llyBack;
+
+//    @BindView(R.id.progressBar)
+//    ProgressBar progressBar;
 
     //硬件加速
     private void hardwareAccelerate(){
@@ -139,13 +148,13 @@ public class BountyViewActivity extends BaseActivity {
             //获取加载进度
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if (newProgress < 100) {
-                    String progress = newProgress + "%";
-//                    loading.setText(progress);
-                } else if (newProgress == 100) {
-                    String progress = newProgress + "%";
-//                    loading.setText(progress);
-                }
+//                if (newProgress == 100) {
+//                    progressBar.setVisibility(View.GONE);//加载完网页进度条消失
+//                } else {
+//                    progressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
+//                    progressBar.setProgress(newProgress);//设置进度值
+//                }
+//                super.onProgressChanged(view, newProgress);
             }
 
             @Override
@@ -171,6 +180,7 @@ public class BountyViewActivity extends BaseActivity {
                 // true表示点击了确认；false表示点击了取消；
                 return true;
             }
+
         });
 
 
@@ -230,5 +240,15 @@ public class BountyViewActivity extends BaseActivity {
             mWebview = null;
         }
         super.onDestroy();
+    }
+
+    @OnClick({R.id.lly_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.lly_back:
+                finish();
+                break;
+
+        }
     }
 }
