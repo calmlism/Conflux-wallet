@@ -33,6 +33,7 @@ import pro.conflux.wallet.ui.activity.GatheringQRCodeActivity;
 import pro.conflux.wallet.ui.activity.PropertyDetailActivity;
 import pro.conflux.wallet.ui.activity.QRCodeScannerActivity;
 import pro.conflux.wallet.ui.activity.SendActivity;
+import pro.conflux.wallet.ui.activity.TokenidListActivity;
 import pro.conflux.wallet.ui.activity.WalletDetailActivity;
 import pro.conflux.wallet.ui.activity.WalletMangerActivity;
 import pro.conflux.wallet.ui.adapter.DrawerWalletAdapter;
@@ -150,7 +151,13 @@ public class PropertyFragment extends BaseFragment implements View.OnClickListen
                 switch (tokenType){
 
                     case "CRC721":
-
+                        Intent crc721_intent = new Intent(getActivity(), TokenidListActivity.class);
+                        crc721_intent.putExtra(C.EXTRA_BALANCE, token.balance);
+                        crc721_intent.putExtra(C.EXTRA_ADDRESS, currCfxWallet.getAddress());
+                        crc721_intent.putExtra(C.EXTRA_CONTRACT_ADDRESS, token.tokenInfo.address);
+                        crc721_intent.putExtra(C.EXTRA_SYMBOL, token.tokenInfo.symbol);
+                        crc721_intent.putExtra(C.EXTRA_DECIMALS, token.tokenInfo.decimals);
+                        startActivity(crc721_intent);
                         break;
                     default:
                         Intent intent = new Intent(getActivity(), PropertyDetailActivity.class);

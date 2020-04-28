@@ -51,9 +51,8 @@ public class TokenidListAdapter extends BaseAdapter {
 
         }
 
-        holder.setText(R.id.tv_ico_name, items.get(position).tokenInfo.symbol);
-        holder.setText(R.id.type,items.get(position).tokenInfo.type);
-
+//        holder.setText(R.id.tv_tokenid, items.get(position).tokenid);
+//        holder.setText(R.id.type,items.get(position).tokenInfo.type);
 
 
         return holder.getConvertView();

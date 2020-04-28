@@ -10,7 +10,7 @@
         android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/tv_ico_name"
+            android:id="@+id/tv_tokenid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
