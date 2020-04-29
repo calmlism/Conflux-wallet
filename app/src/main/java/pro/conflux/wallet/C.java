@@ -15,6 +15,8 @@ public abstract class C {
 
     public static final String EXTRA_ADDRESS = "ADDRESS";
     public static final String EXTRA_CONTRACT_ADDRESS = "CONTRACT_ADDRESS";
+    public static final String EXTRA_CONTRACT_NAME = "CONTRACT_NAME";
+    public static final String EXTRA_CONTRACT_TYPE = "CONTRACT_TYPE";
     public static final String EXTRA_DECIMALS = "DECIMALS";
     public static final String EXTRA_SYMBOL = "SYMBOL";
     public static final String EXTRA_BALANCE = "balance";

@@ -117,7 +117,7 @@ public class TokensViewModel extends BaseViewModel {
     }
 
     private  void onPrice(Ticker ticker) {
-        LogUtils.d("Tokens", "price: " + ticker.symbol + "  " + ticker.price);
+//        LogUtils.d("Tokens", "price: " + ticker.symbol + "  " + ticker.price);
         this.prices.postValue(ticker);
     }
 

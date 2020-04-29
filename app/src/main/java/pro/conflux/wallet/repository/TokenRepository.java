@@ -4,6 +4,7 @@ import android.util.Log;
 
 import pro.conflux.wallet.entity.NetworkInfo;
 import pro.conflux.wallet.entity.Token;
+import pro.conflux.wallet.entity.TokenId;
 import pro.conflux.wallet.entity.TokenInfo;
 import pro.conflux.wallet.service.TokenExplorerClientType;
 import pro.conflux.wallet.utils.LogUtils;
@@ -67,18 +68,6 @@ public class TokenRepository implements TokenRepositoryType {
         return Observable.create(e -> {
             NetworkInfo defaultNetwork = cfxNetworkRepository.getDefaultNetwork();
 
-//            Token[] tokens = tokenLocalSource.fetch(defaultNetwork, walletAddress)
-//                    .map(items -> {
-//                        int len = items.length;
-//                        Token[] result = new Token[len];
-//                        for (int i = 0; i < len; i++) {
-//                            result[i] = new Token(items[i], null);
-//                        }
-//                        return result;
-//                    })
-//                    .blockingGet();
-//            e.onNext(tokens);
-
 //            updateTokenInfoCache(defaultNetwork, walletAddress);//更新接口下的钱包关联绑定的token数据，这里不用，所以屏蔽
             Token[]  tokens = tokenLocalSource.fetch(defaultNetwork,  walletAddress)
                         .map(items -> {
@@ -119,6 +108,27 @@ public class TokenRepository implements TokenRepositoryType {
                         }).blockingGet();
 
             e.onNext(tokens);
+
+        });
+    }
+
+    @Override
+    public Observable<TokenId[]> fetchTokenIds(String walletAddress, TokenInfo tokenInfo) {
+        return Observable.create(e -> {
+            NetworkInfo defaultNetwork = cfxNetworkRepository.getDefaultNetwork();
+
+            BigDecimal tokenidsCount = getBalance(walletAddress,tokenInfo);
+            String countStr = tokenidsCount.setScale(tokenInfo.decimals, RoundingMode.CEILING).toPlainString();
+            int countNum =  Integer.parseInt(countStr);
+
+            TokenId[] tokenIdsArray = new TokenId[countNum];
+            for(int index = 0 ; index < countNum ; index ++){
+
+                String tmpTokenid = getTokenOfOwnerByIndex(walletAddress,index,tokenInfo);
+                tokenIdsArray[index] = new TokenId(tokenInfo,tmpTokenid,index);
+            }
+            
+            e.onNext(tokenIdsArray);
 
         });
     }

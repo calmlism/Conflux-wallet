@@ -1,5 +1,6 @@
 package pro.conflux.wallet.ui.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,15 +15,22 @@ import butterknife.BindView;
 import pro.conflux.wallet.C;
 import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseActivity;
-import pro.conflux.wallet.entity.Token;
+
+import pro.conflux.wallet.entity.TokenId;
 import pro.conflux.wallet.entity.TokenInfo;
-import pro.conflux.wallet.ui.adapter.AddTokenListAdapter;
+
 import pro.conflux.wallet.ui.adapter.TokenidListAdapter;
+import pro.conflux.wallet.viewmodel.TokenIdListViewModel;
+import pro.conflux.wallet.viewmodel.TokenIdListViewModelFactory;
+
 
 /**
  * 地址下TokenID列表
  */
 public class TokenidListActivity extends BaseActivity {
+
+    TokenIdListViewModelFactory tokenIdListViewModelFactory;
+    private TokenIdListViewModel tokenidListViewModel;
 
     @BindView(R.id.common_toolbar)
     Toolbar commonToolbar;
@@ -42,6 +50,8 @@ public class TokenidListActivity extends BaseActivity {
     private int decimals;
     private String balance;
     private String symbol;
+    private String tokenName;
+    private String tokenType;
 
     @Override
     public int getLayoutId() {
@@ -66,22 +76,27 @@ public class TokenidListActivity extends BaseActivity {
         balance = intent.getStringExtra(C.EXTRA_BALANCE);
         contractAddress = intent.getStringExtra(C.EXTRA_CONTRACT_ADDRESS);
         decimals = intent.getIntExtra(C.EXTRA_DECIMALS, C.CFX_DECIMALS);
+        tokenName = intent.getStringExtra(C.EXTRA_CONTRACT_NAME);
+        tokenType = intent.getStringExtra(C.EXTRA_CONTRACT_TYPE);
         symbol = intent.getStringExtra(C.EXTRA_SYMBOL);
         symbol = symbol == null ? C.CFX_SYMBOL : symbol;
 
         tvTitle.setText(symbol);
 
-        // TODO: 这里处理获取地址下的tokenid
+        tokenIdListViewModelFactory = new TokenIdListViewModelFactory();
+        tokenidListViewModel = ViewModelProviders.of(this, tokenIdListViewModelFactory)
+                .get(TokenIdListViewModel.class);
+        tokenidListViewModel.tokenids().observe(this, this::onTokenIDs);
 
-
+        tokenidListViewModel.prepare(new TokenInfo(contractAddress,tokenName,symbol,decimals,tokenType));
     }
 
-    private void onTokenIDs(Token[] tokens) {
 
-
+    private void onTokenIDs(TokenId[] tokenids) {
 
         mAdapter = new TokenidListAdapter(this, mItems, R.layout.list_item_tokenid_property);
         tokenidList.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -92,11 +107,13 @@ public class TokenidListActivity extends BaseActivity {
     public static class TokenIDItem {
         public final TokenInfo tokenInfo;
         public String tokenid;
+        public int index;
 
 
-        public TokenIDItem(TokenInfo tokenInfo,  String tokenid) {
+        public TokenIDItem(TokenInfo tokenInfo,  String tokenid , int index) {
             this.tokenInfo = tokenInfo;
             this.tokenid = tokenid;
+            this.index = index;
         }
     }
 }

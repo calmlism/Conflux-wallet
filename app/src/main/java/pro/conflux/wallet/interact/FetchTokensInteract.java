@@ -2,6 +2,8 @@ package pro.conflux.wallet.interact;
 
 
 import pro.conflux.wallet.entity.Token;
+import pro.conflux.wallet.entity.TokenId;
+import pro.conflux.wallet.entity.TokenInfo;
 import pro.conflux.wallet.repository.TokenRepositoryType;
 
 import io.reactivex.Observable;
@@ -18,6 +20,12 @@ public class FetchTokensInteract {
 
     public Observable<Token[]> fetch(String walletAddress) {
         return tokenRepository.fetch(walletAddress)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<TokenId[]> fetchTokenIds(String walletAddress, TokenInfo tokenInfo){
+        return tokenRepository.fetchTokenIds(walletAddress,tokenInfo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

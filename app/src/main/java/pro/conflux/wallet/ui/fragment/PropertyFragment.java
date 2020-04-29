@@ -155,6 +155,8 @@ public class PropertyFragment extends BaseFragment implements View.OnClickListen
                         crc721_intent.putExtra(C.EXTRA_BALANCE, token.balance);
                         crc721_intent.putExtra(C.EXTRA_ADDRESS, currCfxWallet.getAddress());
                         crc721_intent.putExtra(C.EXTRA_CONTRACT_ADDRESS, token.tokenInfo.address);
+                        crc721_intent.putExtra(C.EXTRA_CONTRACT_NAME, token.tokenInfo.name);
+                        crc721_intent.putExtra(C.EXTRA_CONTRACT_TYPE, token.tokenInfo.type);
                         crc721_intent.putExtra(C.EXTRA_SYMBOL, token.tokenInfo.symbol);
                         crc721_intent.putExtra(C.EXTRA_DECIMALS, token.tokenInfo.decimals);
                         startActivity(crc721_intent);
