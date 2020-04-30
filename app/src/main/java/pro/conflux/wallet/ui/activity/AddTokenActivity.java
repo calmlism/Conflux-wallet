@@ -48,7 +48,6 @@ public class AddTokenActivity extends BaseActivity {
     @BindView(R.id.rl_btn)
     LinearLayout rlBtn;
 
-
     List<TokenItem> mItems = new ArrayList<TokenItem>();
 
     private AddTokenListAdapter mAdapter;
