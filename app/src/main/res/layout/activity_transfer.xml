@@ -286,15 +286,12 @@
 
 </LinearLayout>
 
-
-
-
     <TextView
         android:id="@+id/btn_next"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginBottom="10dp"
-        android:layout_gravity=" bottom |center_horizontal"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_marginTop="44dp"
         android:background="@drawable/mine_header_bg_shape"
         android:gravity="center"
