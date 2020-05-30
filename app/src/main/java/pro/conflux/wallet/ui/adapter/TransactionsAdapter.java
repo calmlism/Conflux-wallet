@@ -43,8 +43,11 @@ public class TransactionsAdapter  extends BaseQuickAdapter<Transaction, BaseView
         boolean isSent = transaction.from.toLowerCase().equals(defaultAddress.toLowerCase());
         boolean isCreateContract = TextUtils.isEmpty(transaction.to);
 
+        helper.setTextColor(R.id.type, ContextCompat.getColor(mContext, transaction.status != 0 ? R.color.red : R.color.black));
+
         if (isSent) {
             if (isCreateContract) {
+
                 helper.setText(R.id.type, R.string.create);
             } else {
                 helper.setText(R.id.type, R.string.sent);
@@ -60,6 +63,8 @@ public class TransactionsAdapter  extends BaseQuickAdapter<Transaction, BaseView
         } else {
             helper.setImageResource(R.id.type_icon, R.drawable.ic_arrow_downward_black_24dp);
         }
+
+        helper.setTextColor(R.id.address, ContextCompat.getColor(mContext, transaction.status != 0 ? R.color.red : R.color.grey));
 
         if (isCreateContract) {
             //这里有问题

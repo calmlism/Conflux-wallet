@@ -52,5 +52,6 @@
 
     <color name="green">#2fbb4f</color>
     <color name="red">#f7506c</color>
-
+    <color name="black">#000000</color>
+    <color name="grey">#A6A6A6</color>
 </resources>

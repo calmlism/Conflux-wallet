@@ -63,6 +63,7 @@ public class BlockExplorerClient implements BlockExplorerClientType {
                     .fetchTransactions(address, true)
                     .lift(apiError(gson))
                     .map(r -> r.result.data)
+
                     .subscribeOn(Schedulers.io());
         } else {
 	    	//当是token时的查询

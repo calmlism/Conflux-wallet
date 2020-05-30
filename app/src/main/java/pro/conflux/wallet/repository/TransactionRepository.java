@@ -3,6 +3,10 @@ package pro.conflux.wallet.repository;
 
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import pro.conflux.wallet.entity.NetworkInfo;
 import pro.conflux.wallet.entity.Transaction;
 import pro.conflux.wallet.service.BlockExplorerClientType;
@@ -42,6 +46,11 @@ public class TransactionRepository implements TransactionRepositoryType {
                 e.onNext(transactions);
             }
             transactions = blockExplorerClient.fetchTransactions(walletAddr, tokenAddr).blockingFirst();
+
+            //添加过滤无效交易数据
+            ArrayList<Transaction> transacList = new ArrayList<Transaction>();
+
+
             transactionLocalSource.clear();
             if (TextUtils.isEmpty(tokenAddr)) {
                 transactionLocalSource.putTransactions(walletAddr, transactions);

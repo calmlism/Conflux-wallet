@@ -28,7 +28,7 @@ public class CfxNetworkRepository {
 
 private final NetworkInfo[] NETWORKS = new NetworkInfo[] {
         new NetworkInfo(CONFLUX_MAIN_NETWORK_NAME, CFX_SYMBOL,
-                "http://52.175.52.111:12537",
+                "http://mainnet-jsonrpc.conflux-chain.org:12537",
                 "http://47.102.164.229:8885/",
                 "https://www.confluxscan.io/",1, true),
         new NetworkInfo(LOCAL_DEV_NETWORK_NAME, CFX_SYMBOL,

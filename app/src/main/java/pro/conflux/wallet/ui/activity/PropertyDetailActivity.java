@@ -104,7 +104,7 @@ public class PropertyDetailActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        LogUtils.d("contractAddress " + contractAddress);
+//        LogUtils.d("contractAddress " + contractAddress);
 
         if (!TextUtils.isEmpty(contractAddress)) {
             viewModel.prepare(contractAddress);
@@ -117,7 +117,7 @@ public class PropertyDetailActivity extends BaseActivity {
 
 
     private void onTransactions(List<Transaction> transactions) {
-        LogUtils.d("onTransactions", "size: " + transactions.size());
+//        LogUtils.d("onTransactions", "size: " + transactions.size());
         transactionLists = transactions;
         adapter.addTransactions(transactionLists, currWallet, symbol);
     }
