@@ -58,7 +58,12 @@ public class CreateTransactionInteract {
                 .flatMap(nonce -> Single.fromCallable( () -> {
 
             Credentials credentials = WalletUtils.loadCredentials(password,  from.getKeystorePath());
-            BigInteger storageLimit = BigInteger.valueOf(100000) ;
+
+            BigInteger storageLimit = BigInteger.valueOf(0) ;
+            //判断是否为合约
+            if(to.indexOf("0x8") > -1){
+                storageLimit = BigInteger.valueOf(100000) ;
+            }
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
             BigInteger chainId = BigInteger.valueOf(0);
             RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount,storageLimit,epochHeight,chainId);

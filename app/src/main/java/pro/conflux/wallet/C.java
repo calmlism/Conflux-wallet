@@ -24,14 +24,14 @@ public abstract class C {
 //    public static final String DEFAULT_GAS_PRICE = "100";
     public static final String DEFAULT_GAS_PRICE = "1000000000";
 
-    public static final String DEFAULT_GAS_LIMIT_FOR_CFX = "100000";
+    public static final String DEFAULT_GAS_LIMIT_FOR_CFX = "300000";
 
-    public static final String DEFAULT_GAS_LIMIT = "100000";
+    public static final String DEFAULT_GAS_LIMIT = "300000";
 
 
-    public static final String DEFAULT_GAS_LIMIT_FOR_TOKENS = "100000";
+    public static final String DEFAULT_GAS_LIMIT_FOR_TOKENS = "300000";
 
-    public static final String DEFAULT_GAS_LIMIT_FOR_NONFUNGIBLE_TOKENS = "100000";
+    public static final String DEFAULT_GAS_LIMIT_FOR_NONFUNGIBLE_TOKENS = "300000";
 
     public static final long GAS_LIMIT_MIN = 1000000L;
     public static final long GAS_PER_BYTE = 300;
