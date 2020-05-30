@@ -102,7 +102,7 @@ public class FetchGasSettingsInteract {
             {
 //                cachedGasPrice = price.getGasPrice();//这里网络不稳定，先使用默认100
                 cachedGasPrice=new BigInteger(C.DEFAULT_GAS_PRICE);
-                LogUtils.d("FetchGasSettingsInteract", "web3 price:" +  price.getGasPrice());
+//                LogUtils.d("FetchGasSettingsInteract", "web3 price:" +  price.getGasPrice());
                 gasPrice.postValue(cachedGasPrice);
             }
             else if (networkRepository.getDefaultNetwork().chainId != currentChainId)

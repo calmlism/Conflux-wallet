@@ -47,10 +47,6 @@ public class TransactionRepository implements TransactionRepositoryType {
             }
             transactions = blockExplorerClient.fetchTransactions(walletAddr, tokenAddr).blockingFirst();
 
-            //添加过滤无效交易数据
-            ArrayList<Transaction> transacList = new ArrayList<Transaction>();
-
-
             transactionLocalSource.clear();
             if (TextUtils.isEmpty(tokenAddr)) {
                 transactionLocalSource.putTransactions(walletAddr, transactions);

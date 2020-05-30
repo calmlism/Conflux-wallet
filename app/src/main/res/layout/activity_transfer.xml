@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="0.000000001 cfx"
+            android:text="0.0001 cfx"
             android:textColor="@color/property_ico_worth_color"
             android:textSize="12sp" />
 
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
 
-                android:text="0.00001 Gdrip"
+                android:text="1 Gdrip"
                 android:textColor="@color/property_ico_worth_color"
                 android:textSize="12sp" />
 

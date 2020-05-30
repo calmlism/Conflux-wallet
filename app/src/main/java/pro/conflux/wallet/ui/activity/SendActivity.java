@@ -116,7 +116,7 @@ public class SendActivity extends BaseActivity {
     private static final int QRCODE_SCANNER_REQUEST = 1100;
 
     private static final double miner_min = 1 ;
-    private static final double miner_max = 20;
+    private static final double miner_max = 100;
 
     private String scanResult;
 
@@ -191,7 +191,7 @@ public class SendActivity extends BaseActivity {
 
 
                     BigDecimal value = Convert.fromWei(new BigDecimal(gasPrice), Convert.Unit.GWEI);
-                    customGasPrice.setText(new DecimalFormat("0.0000000").format(value));
+                    customGasPrice.setText(new DecimalFormat("0").format(value));
                     customGasLimit.setText(gasLimit.toString());
 
                 } else {
@@ -217,11 +217,11 @@ public class SendActivity extends BaseActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                    double p = progress / 1000000f;
-                    double d = (miner_max - miner_min) * p + 0.00001;
+                    double p = progress / 100f;
+                    double d = (miner_max - miner_min) * p + 1;
 
                    gasPrice = BalanceUtils.gweiToWei(BigDecimal.valueOf(d));
-                   tvGasPrice.setText(new DecimalFormat("0.000000").format(d) + " " + C.GWEI_UNIT);
+                   tvGasPrice.setText(new DecimalFormat("0").format(d) + " " + C.GWEI_UNIT);
 
                 updateNetworkFee();
             }
@@ -264,7 +264,7 @@ public class SendActivity extends BaseActivity {
                 try {
                     BigDecimal value = BalanceUtils.weiToCfx(gasPrice.multiply(gasLimit));
 
-                    tvGasCost.setText(new DecimalFormat("0.00000000000").format(value)+ " " + cfxUnit);
+                    tvGasCost.setText(new DecimalFormat("0.0000").format(value)+ " " + cfxUnit);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -297,7 +297,7 @@ public class SendActivity extends BaseActivity {
         try {
             BigDecimal value = BalanceUtils.weiToCfx(gasPrice.multiply(gasLimit));
 
-            tvGasCost.setText(new DecimalFormat("0.00000000000").format(value)+ " " + C.CFX_SYMBOL);
+            tvGasCost.setText(new DecimalFormat("0.0000").format(value)+ " " + C.CFX_SYMBOL);
         } catch (Exception e) {
             e.printStackTrace();
         }
