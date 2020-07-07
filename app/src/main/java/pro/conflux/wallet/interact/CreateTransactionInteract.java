@@ -1,5 +1,10 @@
 package pro.conflux.wallet.interact;
 
+import org.cfx.protocol.core.DefaultBlockParameterName;
+import org.cfx.protocol.core.methods.request.Transaction;
+import org.cfx.protocol.core.methods.response.CfxGetTransactionCount;
+import org.cfx.protocol.core.methods.response.UsedGasAndCollateral;
+import org.cfx.protocol.core.methods.response.UsedGasAndCollateralResponse;
 import org.cfx.rlp.RlpEncoder;
 import org.cfx.rlp.RlpList;
 import org.cfx.rlp.RlpString;
@@ -60,10 +65,15 @@ public class CreateTransactionInteract {
             Credentials credentials = WalletUtils.loadCredentials(password,  from.getKeystorePath());
 
             BigInteger storageLimit = BigInteger.valueOf(0) ;
+
             //判断是否为合约
             if(to.indexOf("0x8") > -1){
-                storageLimit = BigInteger.valueOf(100000) ;
+
+                UsedGasAndCollateral usedGasAndCollateral = cfx.cfxEstimateGasAndCollateral(new Transaction(from.address,nonce,gasPrice,gasLimit,to,amount,null)).send().getValue();
+                storageLimit = usedGasAndCollateral.getGasUsed();
+                storageLimit = BigInteger.valueOf(512);//暂时先固定设置为512
             }
+
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
             BigInteger chainId = BigInteger.valueOf(0);
             RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount,storageLimit,epochHeight,chainId);
@@ -92,7 +102,10 @@ public class CreateTransactionInteract {
                 .flatMap(nonce -> Single.fromCallable( () -> {
 
             Credentials credentials = WalletUtils.loadCredentials(password,  from.getKeystorePath());
-            BigInteger storageLimit = BigInteger.valueOf(100000) ;
+//            BigInteger storageLimit = BigInteger.valueOf(100000) ;
+            UsedGasAndCollateral usedGasAndCollateral = cfx.cfxEstimateGasAndCollateral(new Transaction(from.address,nonce,gasPrice,gasLimit,to,amount,null)).send().getValue();
+            BigInteger storageLimit =usedGasAndCollateral.getGasUsed();
+
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
             BigInteger chainId = BigInteger.valueOf(0);
             RawTransaction rawTransaction = RawTransaction.createTransaction(

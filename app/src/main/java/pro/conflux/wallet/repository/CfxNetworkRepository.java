@@ -106,7 +106,7 @@ private final NetworkInfo[] NETWORKS = new NetworkInfo[] {
     {
         return Single.fromCallable(() -> {
             CfxGetTransactionCount cfxGetTransactionCount = web3j
-                    .cfxGetNonce(walletAddress, DefaultBlockParameterName.LATEST)   //
+                    .cfxGetNonce(walletAddress, DefaultBlockParameterName.fromString("latest_state"))   //
                     .send();
             return cfxGetTransactionCount.getTransactionCount();
         });
