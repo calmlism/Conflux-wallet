@@ -1,6 +1,7 @@
 package pro.conflux.wallet.service;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import pro.conflux.wallet.entity.NetworkInfo;
 import pro.conflux.wallet.entity.Transaction;
@@ -54,7 +55,7 @@ public class BlockExplorerClient implements BlockExplorerClientType {
 	@Override
 	public Observable<Transaction[]> fetchTransactions(String address, String tokenAddr) {
 		//先根据地址从新替换transactionsApiClient
-		String backendUrl = networkRepository.getDefaultNetwork().backendUrl +"api/account/"+address+"/";
+		String backendUrl = networkRepository.getDefaultNetwork().backendUrl + "api/";
 		buildApiClient(backendUrl);
 
 
@@ -62,7 +63,7 @@ public class BlockExplorerClient implements BlockExplorerClientType {
             return transactionsApiClient
                     .fetchTransactions(address, true)
                     .lift(apiError(gson))
-                    .map(r -> r.result.data)
+                    .map(r -> r.result.list)
 
                     .subscribeOn(Schedulers.io());
         } else {
@@ -90,9 +91,11 @@ public class BlockExplorerClient implements BlockExplorerClientType {
 //	http://47.102.164.229:8885/api/account/0x1fc46011b87442d6a2f25e2e48101cdc9019839b/transactionList?pageNum=1&pageSize=50
 	private interface TransactionsApiClient {
 		//获取cfx历史记录
-		@GET("transactionList?pageNum=1&pageSize=50")
+		@GET("transaction/list?page=1&pageSize=100&txType=all")
 		Observable<Response<CfxScanResponse>> fetchTransactions(
-				@Query("address") String address, @Query("filterContractInteraction") boolean filter);
+			@Query("accountAddress") String address,
+			@Query("filterContractInteraction") boolean filter
+		);
 
 	@GET("transactionList?pageNum=1&pageSize=50")
 	Observable<Response<CfxScanResponse>> fetchTransactions(
@@ -109,7 +112,7 @@ public class BlockExplorerClient implements BlockExplorerClientType {
 	private  final  static  class Result{
 
 		String total;
-		Transaction[] data;
+		Transaction[] list;
 	}
 
 	private final static class ApiErrorOperator <T> implements ObservableOperator<T, Response<T>> {
