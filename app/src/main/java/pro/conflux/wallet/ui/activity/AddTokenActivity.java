@@ -87,7 +87,7 @@ public class AddTokenActivity extends BaseActivity {
 
         // TODO
         mItems.add(new TokenItem(new TokenInfo("", "CFX", "CFX", 18,"BASE"), true, R.mipmap.wallet_logo_demo));
-        mItems.add(new TokenItem(new TokenInfo("0x88a8f9b1835ae66b6f1da3c930b7d11220bebf78", "Fans Coin", "FC", 18,"CRC20"), false, R.mipmap.fanscoin));
+        mItems.add(new TokenItem(new TokenInfo("0x87010faf5964d67ed070bc4b8dcafa1e1adc0997", "Fans Coin", "FC", 18,"CRC20"), false, R.mipmap.fanscoin));
 
         tokensViewModelFactory = new TokensViewModelFactory();
         tokensViewModel = ViewModelProviders.of(this, tokensViewModelFactory)
