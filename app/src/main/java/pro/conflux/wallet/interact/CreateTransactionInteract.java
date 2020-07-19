@@ -75,7 +75,7 @@ public class CreateTransactionInteract {
             }
 
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
-            BigInteger chainId = BigInteger.valueOf(0);
+            BigInteger chainId = BigInteger.valueOf(2);
             RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount,storageLimit,epochHeight,chainId);
 
             byte[] signedMessage =TransactionEncoder.signMessage(rawTransaction,credentials);
@@ -107,7 +107,7 @@ public class CreateTransactionInteract {
             BigInteger storageLimit =usedGasAndCollateral.getGasUsed();
 
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
-            BigInteger chainId = BigInteger.valueOf(0);
+            BigInteger chainId = BigInteger.valueOf(2);
             RawTransaction rawTransaction = RawTransaction.createTransaction(
                     nonce, gasPrice, gasLimit, contractAddress, callFuncData,storageLimit,epochHeight,chainId);
 
