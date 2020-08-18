@@ -36,7 +36,10 @@ public class TokensAdapter extends BaseQuickAdapter<Token, BaseViewHolder> {
 
             helper.setImageResource(R.id.logo,R.mipmap.fanscoin);
 
-        }else{
+        }else if(token.tokenInfo.symbol.equals("CPI")){
+            helper.setImageResource(R.id.logo,R.mipmap.cpitoken);
+        }
+        else{
             helper.setImageResource(R.id.logo,R.mipmap.ic_launcher);
         }
 

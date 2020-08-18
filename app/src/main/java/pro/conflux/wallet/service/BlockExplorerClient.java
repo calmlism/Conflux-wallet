@@ -88,7 +88,6 @@ public class BlockExplorerClient implements BlockExplorerClientType {
 	}
 
 
-//	http://47.102.164.229:8885/api/account/0x1fc46011b87442d6a2f25e2e48101cdc9019839b/transactionList?pageNum=1&pageSize=50
 	private interface TransactionsApiClient {
 		//获取cfx历史记录
 		@GET("transaction/list?page=1&pageSize=100&txType=all")
