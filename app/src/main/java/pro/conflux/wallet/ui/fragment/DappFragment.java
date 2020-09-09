@@ -10,6 +10,7 @@ import pro.conflux.wallet.R;
 import pro.conflux.wallet.base.BaseFragment;
 import pro.conflux.wallet.ui.activity.BountyViewActivity;
 import pro.conflux.wallet.ui.activity.ForumViewActivity;
+import pro.conflux.wallet.ui.activity.RedPackageViewActivity;
 import pro.conflux.wallet.ui.activity.ScanViewActivity;
 import pro.conflux.wallet.ui.adapter.PictureAdapter;
 
@@ -23,11 +24,11 @@ public class DappFragment extends BaseFragment {
 
     //图片的文字标题
     private String[] titles = new String[]
-            { "Bounty", "Forum", "Scan"};
+            { "Bounty", "Forum", "Scan","红包"};
 
     //图片ID数组
     private int[] images = new int[]{
-            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher
+            R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.redpackage
     };
 
     @Override
@@ -57,7 +58,10 @@ public class DappFragment extends BaseFragment {
                     Intent intent = new Intent(getActivity(), ScanViewActivity.class);
                     startActivity(intent);
                 }
-
+                if(position == 3){
+                    Intent intent = new Intent(getActivity(), RedPackageViewActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

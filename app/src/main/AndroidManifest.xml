@@ -70,6 +70,7 @@
         <activity android:name="pro.conflux.wallet.ui.activity.BountyViewActivity" />
         <activity android:name="pro.conflux.wallet.ui.activity.ForumViewActivity" />
         <activity android:name="pro.conflux.wallet.ui.activity.ScanViewActivity" />
+        <activity android:name="pro.conflux.wallet.ui.activity.RedPackageViewActivity" />
     </application>
 
 </manifest>
