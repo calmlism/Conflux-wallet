@@ -85,7 +85,7 @@
     <string name="net_setting_main">Mainnet</string>
     <string name="net_setting_kovan">Kovan </string>
     <string name="net_setting_ropsten">Ropsten </string>
-    <string name="net_setting_local_dev">Local </string>
+    <string name="net_setting_local_dev">Baknet </string>
 
     <string name="currency_unit_setting_cny">CNY</string>
     <string name="currency_unit_setting_usd">USD</string>
