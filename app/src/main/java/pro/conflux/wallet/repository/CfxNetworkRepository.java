@@ -32,7 +32,7 @@ private final NetworkInfo[] NETWORKS = new NetworkInfo[] {
                 "http://47.102.164.229:8885/",
                 "https://www.confluxscan.io/",1, true),
         new NetworkInfo(LOCAL_DEV_NETWORK_NAME, CFX_SYMBOL,
-                "http://13.67.73.51:12537",
+                "http://home.conflux.work:12537",
                 "http://47.102.164.229:8885/",
                 "https://www.confluxscan.io/",1, false),
 };

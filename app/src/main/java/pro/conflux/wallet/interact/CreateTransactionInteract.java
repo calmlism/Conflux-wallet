@@ -75,7 +75,7 @@ public class CreateTransactionInteract {
             }
 
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
-            BigInteger chainId = BigInteger.valueOf(2);
+            BigInteger chainId = BigInteger.valueOf(1029);
             RawTransaction rawTransaction = RawTransaction.createCfxTransaction(nonce, gasPrice, gasLimit, to, amount,storageLimit,epochHeight,chainId);
 
             byte[] signedMessage =TransactionEncoder.signMessage(rawTransaction,credentials);
@@ -107,7 +107,7 @@ public class CreateTransactionInteract {
             BigInteger storageLimit =usedGasAndCollateral.getGasUsed();
 
             BigInteger epochHeight = cfx.cfxBlockNumber().send().getBlockNumber();
-            BigInteger chainId = BigInteger.valueOf(2);
+            BigInteger chainId = BigInteger.valueOf(1029);
             RawTransaction rawTransaction = RawTransaction.createTransaction(
                     nonce, gasPrice, gasLimit, contractAddress, callFuncData,storageLimit,epochHeight,chainId);
 
@@ -168,7 +168,7 @@ public class CreateTransactionInteract {
         final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
         BigInteger storageLimit = BigInteger.valueOf(100000) ;
         BigInteger epochHeight = web3j.cfxBlockNumber().send().getBlockNumber();
-        BigInteger chainId = BigInteger.valueOf(0);
+        BigInteger chainId = BigInteger.valueOf(1029);
 
         return networkRepository.getLastTransactionNonce(web3j, from.address)
                 .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit,toAddress, subunitAmount,  data,storageLimit,epochHeight,chainId))
@@ -191,7 +191,7 @@ public class CreateTransactionInteract {
         final Cfx web3j = Cfx.build(new HttpService(networkRepository.getDefaultNetwork().rpcServerUrl));
         BigInteger storageLimit = BigInteger.valueOf(100000) ;
         BigInteger epochHeight = web3j.cfxBlockNumber().send().getBlockNumber();
-        BigInteger chainId = BigInteger.valueOf(0);
+        BigInteger chainId = BigInteger.valueOf(1029);
 
         return networkRepository.getLastTransactionNonce(web3j, from.address)
                 .flatMap(nonce -> getRawTransaction(nonce, gasPrice, gasLimit, BigInteger.ZERO, data,storageLimit,epochHeight,chainId))
