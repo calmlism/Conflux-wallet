@@ -137,10 +137,11 @@ public class ImportMnemonicFragment extends BaseFragment {
                 String walletPwd = etWalletPwd.getText().toString().trim();
                 String confirmPwd = etWalletPwdAgain.getText().toString().trim();
                 String pwdReminder = etWalletPwdReminderInfo.getText().toString().trim();
+                String cfxTypeTxt = etStandard.getText().toString().trim();
                 boolean verifyWalletInfo = verifyInfo(mnemonic, walletPwd, confirmPwd, pwdReminder);
                 if (verifyWalletInfo) {
                     showDialog(getString(R.string.loading_wallet_tip));
-                    createWalletInteract.loadWalletByMnemonic(cfxType, mnemonic, walletPwd).subscribe(this::loadSuccess, this::onError);
+                    createWalletInteract.loadWalletByMnemonic(cfxTypeTxt, mnemonic, walletPwd).subscribe(this::loadSuccess, this::onError);
                 }
                 break;
             case R.id.lly_standard_menu:
